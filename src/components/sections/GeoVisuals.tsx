@@ -6,22 +6,22 @@ export function GeoVisuals() {
   const maps = [
     {
       title: "Maize Suitability",
-      image: "/images/image5.jpg",
+      image: `${import.meta.env.PUBLIC_URL || ''}/images/image5.jpg`,
       link: "/images/image5.jpg"
     },
     {
       title: "Wetland Health Index (WHI)",
-      image: "/images/Wetland Health Index.jpg",
+      image: `${import.meta.env.PUBLIC_URL || ''}/images/Wetland Health Index.jpg`,
       link: "/images/Wetland Health Index.jpg"
     },
     {
       title: "Land Use and Land Cover Classification",
-      image: "/images/Current land use land cover.jpg",
+      image: `${import.meta.env.PUBLIC_URL || ''}/images/Current land use land cover.jpg`,
       link: "/images/Current land use land cover.jpg"
     },
     {
       title: "Vegetation Cover in Volcanoes National Park of Rwanda",
-      image: "/images/Landcove types.jpg",
+      image: `${import.meta.env.PUBLIC_URL || ''}/images/Landcove types.jpg`,
       link: "/images/Landcove types.jpg"
     }
   ];
@@ -29,12 +29,12 @@ export function GeoVisuals() {
   const storyMaps = [
     {
       title: "Climate Change Adaptation in Rwanda",
-      image: "/images/GanzAfrica_Workshop.png",
+      image: `${import.meta.env.PUBLIC_URL || ''}/images/GanzAfrica_Workshop.png`,
       link: "https://storymaps.arcgis.com/stories/d15dd9b68d9f4cd595b300fa5edbe0b8"
     },
     {
       title: "Roots of Success: Rwanda's Journey to a Greener Future",
-      image: "/images/Nyungwe NPK road.jpg",
+      image: `${import.meta.env.PUBLIC_URL || ''}/images/Nyungwe NPK road.jpg`,
       link: "https://storymaps.arcgis.com/stories/59ec67e48507448a82e5339be2ebb78c"
     }
   ];
@@ -90,13 +90,13 @@ export function GeoVisuals() {
             <div className="grid md:grid-cols-2 gap-8">
             <StoryMapCard
               title="Land Cover Change in Kirehe District"
-              image="/images/Kirehe District.jpg"
+              image={`${import.meta.env.PUBLIC_URL || ''}/images/Kirehe District.jpg`}
               link="https://www.arcgis.com/apps/dashboards/355deb62df1848f38fc1528fc7ba896e"
               type="dashboard"
             />
             <StoryMapCard
               title="The Effectiveness of Forest Landscape Restoration, Social-Economic aspects"
-              image="/images/Picture on the field.jpeg"
+              image={`${import.meta.env.PUBLIC_URL || ''}/images/Picture on the field.jpeg`}
               link="https://lookerstudio.google.com/embed/reporting/8bc7dad7-1272-4dfb-abff-ec832cf079d5/page/pkA7D"
               type="dashboard"
             />
