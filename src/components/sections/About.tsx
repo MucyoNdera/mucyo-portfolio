@@ -21,13 +21,13 @@ export function About() {
               sustainable agriculture, climate adaptation, ecosystem restoration, and community empowerment.
             </p>
           </div>
-          <div className="relative rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-[1.02]">
-          <img 
-  src={`${import.meta.env.PUBLIC_URL || ''}/images/mucyoganzafrica.jpeg`}
-  alt="Environmental Researcher in Nature"
-  className="w-full h-full object-cover"
-/>
-          </div>
+            <div className="relative rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-[1.02]">
+            <img 
+              src="./images/mucyoganzafrica.jpeg"
+              alt="Mucyo Ndera Tuyizere profile picture"
+              className="w-full h-full object-cover"
+            />
+            </div>
         </div>
       </div>
     </section>

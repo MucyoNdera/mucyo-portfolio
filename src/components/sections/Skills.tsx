@@ -4,25 +4,25 @@ import { SkillCard } from '../cards/SkillCard';
 export function Skills() {
   const skills = {
     gisTools: [
-      { name: 'ArcGIS Pro', proficiency: 95 },
-      { name: 'QGIS', proficiency: 90 },
-      { name: 'ArcGIS Online', proficiency: 85 }
+      { name: 'ArcGIS Pro', proficiency: 85 },
+      { name: 'QGIS', proficiency: 80 },
+      { name: 'ArcGIS Online', proficiency: 75 }
     ],
     programming: [
-      { name: 'Python', proficiency: 60 },
-      { name: 'R', proficiency: 50 },
-      { name: 'SQL', proficiency: 50 }
+      { name: 'Python', proficiency: 50 },
+      { name: 'R', proficiency: 40 },
+      { name: 'SQL', proficiency: 30 }
     ],
     webMapping: [
-      { name: 'Leaflet.js', proficiency: 60 },
-      { name: 'MapBox', proficiency: 30 },
-      { name: 'OpenLayers', proficiency: 75 }
+      { name: 'Leaflet.js', proficiency: 50 },
+      { name: 'MapBox', proficiency: 20 },
+      { name: 'OpenLayers', proficiency: 50 }
     ],
     remoteSensing: [
-      { name: 'ILWIS Imagine', proficiency: 70 },
+      { name: 'ILWIS Imagine', proficiency: 60 },
       { name: 'Deep Learning', proficiency: 40 },
       { name: 'Google Earth Engine', proficiency: 50 },
-      { name: 'Machine Learning', proficiency: 30 }
+      { name: 'Machine Learning', proficiency: 20 }
     ]
   };
 

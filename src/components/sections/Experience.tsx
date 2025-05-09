@@ -10,7 +10,7 @@ export function Experience() {
           <ExperienceCard 
             title="Climate Change Adaptation Fellow"
             company="GanzAfrica Organization"
-            description="Bridging cutting-edge technologies with community-driven solutions to advance natural resource management, climate resilience, sustainable agriculture, ecosystem restoration, and food security."
+            description="Bridging cutting-edge technologies with community-driven solutions to advance climate change adaptation, sustainable agriculture, and food security."
             link="https://ganzafrica.org"
           />
           <ExperienceCard 

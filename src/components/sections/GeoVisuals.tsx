@@ -6,22 +6,22 @@ export function GeoVisuals() {
   const maps = [
     {
       title: "Maize Suitability",
-      image: `${import.meta.env.PUBLIC_URL || ''}/images/image5.jpg`,
+      image:"./images/image5.jpg",
       link: "/images/image5.jpg"
     },
     {
       title: "Wetland Health Index (WHI)",
-      image: `${import.meta.env.PUBLIC_URL || ''}/images/Wetland Health Index.jpg`,
+      image: "./images/Wetland Health Index.jpg",
       link: "/images/Wetland Health Index.jpg"
     },
     {
       title: "Land Use and Land Cover Classification",
-      image: `${import.meta.env.PUBLIC_URL || ''}/images/Current land use land cover.jpg`,
+      image: "./images/Current land use land cover.jpg",
       link: "/images/Current land use land cover.jpg"
     },
     {
       title: "Vegetation Cover in Volcanoes National Park of Rwanda",
-      image: `${import.meta.env.PUBLIC_URL || ''}/images/Landcove types.jpg`,
+      image: "./images/Landcove types.jpg",
       link: "/images/Landcove types.jpg"
     }
   ];
@@ -29,12 +29,12 @@ export function GeoVisuals() {
   const storyMaps = [
     {
       title: "Climate Change Adaptation in Rwanda",
-      image: `${import.meta.env.PUBLIC_URL || ''}/images/GanzAfrica_Workshop.png`,
+      image: "./images/GanzAfrica_Workshop.png",
       link: "https://storymaps.arcgis.com/stories/d15dd9b68d9f4cd595b300fa5edbe0b8"
     },
     {
       title: "Roots of Success: Rwanda's Journey to a Greener Future",
-      image: `${import.meta.env.PUBLIC_URL || ''}/images/Nyungwe NPK road.jpg`,
+      image: "./images/Nyungwe NPK road.jpg",
       link: "https://storymaps.arcgis.com/stories/59ec67e48507448a82e5339be2ebb78c"
     }
   ];
