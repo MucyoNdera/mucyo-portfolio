@@ -87,20 +87,20 @@ export function GeoVisuals() {
 
         <div>
           <h3 className="text-2xl font-semibold text-green-800 mb-6">Interactive Dashboards</h3>
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <StoryMapCard
               title="Land Cover Change in Kirehe District"
-              image={`${import.meta.env.PUBLIC_URL || ''}/images/Kirehe District.jpg`}
+              image="./images/Kirehe District.jpg"
               link="https://www.arcgis.com/apps/dashboards/355deb62df1848f38fc1528fc7ba896e"
               type="dashboard"
             />
             <StoryMapCard
               title="The Effectiveness of Forest Landscape Restoration, Social-Economic aspects"
-              image={`${import.meta.env.PUBLIC_URL || ''}/images/Picture on the field.jpeg`}
+               image="./images/Picture on the field.jpeg"
               link="https://lookerstudio.google.com/embed/reporting/8bc7dad7-1272-4dfb-abff-ec832cf079d5/page/pkA7D"
               type="dashboard"
             />
-            </div>
+          </div>
         </div>
       </div>
     </section>
