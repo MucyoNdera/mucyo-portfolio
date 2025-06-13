@@ -14,7 +14,7 @@ export function MapCard({ title, image, link }: MapCardProps) {
       rel="noopener noreferrer"
       className="block bg-white/90 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
     >
-      <div className="relative h-48">
+      <div className="relative h-64 w-100 mx-auto">
         <img 
           src={image} 
           alt={title}
