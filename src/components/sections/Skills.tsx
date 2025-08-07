@@ -15,14 +15,11 @@ export function Skills() {
     ],
     webMapping: [
       { name: 'Leaflet.js', proficiency: 50 },
-      { name: 'MapBox', proficiency: 20 },
       { name: 'OpenLayers', proficiency: 50 }
     ],
     remoteSensing: [
       { name: 'ILWIS Imagine', proficiency: 60 },
-      { name: 'Deep Learning', proficiency: 40 },
       { name: 'Google Earth Engine', proficiency: 50 },
-      { name: 'Machine Learning', proficiency: 20 }
     ]
   };
 

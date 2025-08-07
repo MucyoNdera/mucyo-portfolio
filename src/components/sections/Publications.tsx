@@ -4,6 +4,11 @@
       
       export function Publications() {
         const publications = [
+                    {
+            title: "Regulatory and socio-economic factors shaping forest landscape restoration in the Congo–Nile Crest",
+            link: "https://doi.org/10.20935/AcadEnvSci7794",
+            year: "2025"
+          },
           {
             title: "Unveiling the resilience of unprotected wetlands through a comprehensive wetland health index assessment, Rwanda: The case of Kiyonga wetland",
             link: "https://doi.org/10.4314/rjeste.v7i1.13",

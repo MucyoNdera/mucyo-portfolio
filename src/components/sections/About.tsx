@@ -11,13 +11,13 @@ export function About() {
               My name is Mucyo Ndera Tuyizere.
               I am currently a Climate Adaptation Fellow at GanzAfrica Organization,
               where I help design and implement community-driven,
-              nature-based solutions using data-driven approaches to strengthen local climate adaptation efforts.
+              nature-based solutions using data-driven approaches to strengthen local climate adaptation efforts in Musanze District of Rwanda. 
               Previously, I worked as a Research Assistant at the University of Rwanda’s Centre for Geographic Information Systems and Remote Sensing,
-              contributing to projects that apply geospatial technologies for environmental planning, monitoring, and management.
+              contributing to projects that apply geospatial technologies to support forest landscape restoration, spatial health analysis, and broader natural Resources management initiatives.
             </p>
             <p className="text-lg text-gray-900">
               I hold a Bachelor of Science (Honors) degree in Geography with a specialization in Environmental Planning from the University of Rwanda.
-              My work is driven by a deep commitment to sustainable environmental practices, with a strong focus on natural resource management, 
+              My work is driven by a deep commitment to sustainable environmental practices, with a strong focus on natural resources management, 
               sustainable agriculture, climate adaptation, ecosystem restoration, and community empowerment.
             </p>
           </div>
