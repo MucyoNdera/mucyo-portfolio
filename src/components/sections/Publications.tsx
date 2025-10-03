@@ -5,6 +5,11 @@
       export function Publications() {
         const publications = [
                     {
+            title: "Assessing forest cover and tree density dynamics in the Congo–Nile Divide region, Western Rwanda",
+            link: "https://doi.org/10.20935/AcadEnvSci7864",
+            year: "2025"
+          },
+          {
             title: "Regulatory and socio-economic factors shaping forest landscape restoration in the Congo–Nile Crest",
             link: "https://doi.org/10.20935/AcadEnvSci7794",
             year: "2025"
