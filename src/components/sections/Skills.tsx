@@ -6,20 +6,20 @@ export function Skills() {
     gisTools: [
       { name: 'ArcGIS Pro', proficiency: 85 },
       { name: 'QGIS', proficiency: 80 },
-      { name: 'ArcGIS Online', proficiency: 75 }
+      { name: 'ArcGIS Online', proficiency: 80 }
     ],
     programming: [
       { name: 'Python', proficiency: 50 },
-      { name: 'R', proficiency: 40 },
-      { name: 'SQL', proficiency: 30 }
+      { name: 'R', proficiency: 60 },
+      { name: 'SQL', proficiency: 50 }
     ],
     webMapping: [
-      { name: 'Leaflet.js', proficiency: 50 },
+      { name: 'Leaflet.js', proficiency: 60 },
       { name: 'OpenLayers', proficiency: 50 }
     ],
     remoteSensing: [
-      { name: 'ILWIS Imagine', proficiency: 60 },
-      { name: 'Google Earth Engine', proficiency: 50 },
+      { name: 'ILWIS Imagine', proficiency: 70 },
+      { name: 'Google Earth Engine', proficiency: 60 },
     ]
   };
 
