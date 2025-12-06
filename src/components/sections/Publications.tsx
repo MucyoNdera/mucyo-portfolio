@@ -15,12 +15,12 @@
             year: "2025"
           },
           {
-            title: "Unveiling the resilience of unprotected wetlands through a comprehensive wetland health index assessment, Rwanda: The case of Kiyonga wetland",
+            title: "Unveiling the resilience of unprotected wetlands through a comprehensive wetland health index assessment, Rwanda: A case of Kigoya wetland",
             link: "https://doi.org/10.4314/rjeste.v7i1.13",
             year: "2025"
           },
           {
-            title: "Spatial-Temporal Analysis of Linkage Between Urbanization and Urban Agriculture in Kigali city, Case Study Gahanga Cell",
+            title: "Spatial-Temporal Analysis of Linkage Between Urbanization and Urban Agriculture in Kigali city, A Case Study of Gahanga Cell",
             link: "http://dx.doi.org/10.13140/RG.2.2.36098.29126",
             year: "2023"
           },
