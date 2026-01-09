@@ -8,7 +8,7 @@ export function About() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <p className="text-lg text-gray-900">
-              I am an environmental planning professional with experience in climate adaptation, natural resource management, and applied geospatial analysis.
+              I am an environmental planning professional with three years ofexperience in climate adaptation, natural resource management, and applied geospatial analysis.
                My work has included supporting community-driven, nature-based solutions in Musanze District through data-driven approaches to strengthen local climate adaptation,
                 as well as contributing to geospatial research on forest landscape restoration, spatial health, and natural resources management at the University of Rwanda’s Centre for Geographic Information Systems and Remote Sensing.
             </p>
