@@ -2,12 +2,12 @@ import React from 'react';
 
 export function About() {
   return (
-    <section id="about" className="py-16 bg-white/80">
+    <section id="about" className="py-8 bg-white/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-green-900 mb-8">About Me</h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="space-y-6">
-            <p className="text-lg text-gray-900">
+        <h2 className="text-3xl font-bold text-green-900 mb-4">About Me</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-4">
+            <p className="text-base text-gray-900">
               I am an environmental planning professional with three years of experience in climate adaptation, natural resource management, and applied geospatial analysis.
                My work has included supporting community-driven, nature-based solutions in Musanze District through data-driven approaches to strengthen local climate adaptation,
                 as well as contributing to geospatial research on forest landscape restoration, spatial health, and natural resources management at the University of Rwanda’s Centre for Geographic Information Systems and Remote Sensing.

@@ -4,9 +4,9 @@ import { PUBLICATIONS } from '../../data/publications';
 
 export function Publications() {
   return (
-    <section id="publications" className="py-16 bg-white/80">
+    <section id="publications" className="py-8 bg-white/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-green-900 mb-8">Publications</h2>
+        <h2 className="text-3xl font-bold text-green-900 mb-4">Publications</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {PUBLICATIONS.map((pub) => (
             <div 

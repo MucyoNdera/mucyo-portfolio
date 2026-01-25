@@ -1,103 +1,119 @@
 # Copilot Instructions for Mucyo Ndera Portfolio
 
-## Project Overview
-This is a **React 18 + TypeScript + Vite portfolio website** showcasing professional profiles, GIS expertise, projects, and publications. Deployed via GitHub Pages.
+## Quick Start
+- **Commands:** `npm run dev` (local dev), `npm run build`, `npm run deploy` (GitHub Pages)
+- **Tech:** React 18 + TypeScript + Vite + Tailwind CSS + Lucide React
+- **Deployment:** GitHub Pages at `https://MucyoNdera.github.io/mucyo-portfolio`
 
-**Tech Stack:** React, TypeScript, Tailwind CSS, Vite, Lucide React icons, React Icons
+## Architecture: Single-Page Section-Based Layout
 
-**Key URLs:**
-- Homepage: `https://MucyoNdera.github.io/mucyo-portfolio`
-- Build tool: Vite (lightweight, fast HMR)
-- Styling: Tailwind CSS with custom gradient background
+This is NOT a routing app—it's a **single scroll-based portfolio** with sections as reusable components.
 
-## Architecture Patterns
+**Data Flow:**
+1. [App.tsx](src/App.tsx) wraps sections in gradient background + ErrorBoundaries
+2. Sections in `src/components/sections/` (Header, Hero, About, Skills, Projects, GeoVisuals, Contact, Footer)
+3. Reusable cards in `src/components/cards/` (ProjectCard, SkillCard, etc.)
+4. Data typically **hardcoded per section** (NOT in centralized store) OR externalized in `src/data/` files
+5. Header has scroll listeners to dynamically change nav opacity (`bg-white/95` when scrolled)
 
-### Component Structure
-The app uses a **section-based layout** following scroll-based navigation:
+**Key Pattern:** Each section independently manages state; no prop drilling needed. Cards handle expandable UI (useState for expand/collapse).
 
-```
-App.tsx (main container with gradient background)
-├── Header (fixed nav with smooth scroll listeners)
-├── Hero (landing section)
-├── About, Education, Experience (profile sections)
-├── Skills, Projects, Publications (showcase sections)
-├── GeoVisuals (specialized content section)
-├── Contact, Footer
-```
+## Data Patterns
 
-**Key Pattern:** Each section is a named component in `src/components/sections/` and imported directly into `App.tsx`. No routing—entire app is single-page with anchor-based navigation.
+### Externalized Data (Preferred for Reusable Items)
+Files in `src/data/` export TypeScript interfaces and arrays:
+- [geovisuals.ts](src/data/geovisuals.ts): `MAPS`, `STORIES`, `VISUALIZATIONS` (interface: `GeoVisualItem` with id, title, description, tags, image, link, type)
+- [projects.ts](src/data/projects.ts): `PROJECTS` array with storymaps and datasets (interface: title, description, image, projectLink, storymapLink, datasetLink)
+- [skills.ts](src/data/skills.ts), [publications.ts](src/data/publications.ts): Similar patterns
 
-### Data Structure
-Skills and experience data are **hardcoded within section components** as local objects (not externalized):
+**Import Example:**
 ```tsx
-const skills = {
-  gisTools: [{ name: 'ArcGIS Pro', proficiency: 85 }, ...],
-  programming: [{ name: 'Python', proficiency: 50 }, ...],
-  // etc.
-};
+import { MAPS, STORIES } from '../../data/geovisuals';
 ```
 
-### Card Components
-Reusable card patterns exist in `src/components/cards/`:
-- **ProjectCard**: Interactive cards with expandable descriptions, image galleries, external links (Map, Database icons for related resources)
-- **SkillCard**: Grid container for skill proficiency bars
-- **ExperienceCard, DatasetCard, StoryMapCard**: Specialized content cards
+### Inline Data (Local Component State)
+Some sections keep data within component for simplicity. Only externalize if reused across multiple components.
 
-All cards use **Tailwind styling with hover effects** (`scale-105`, `shadow-xl transitions`) and **interactive state management** (useState for expandable sections).
+## Component Patterns
 
-## Developer Workflows
-
-### Commands
-```bash
-npm run dev        # Start Vite dev server (HMR enabled)
-npm run build      # Production build to dist/
-npm run lint       # ESLint check (TS + React rules)
-npm run preview    # Preview prod build locally
-npm run deploy     # Build + deploy to GitHub Pages
+### Cards (Expandable, Interactive)
+[ProjectCard.tsx](src/components/cards/ProjectCard.tsx) exemplifies the card pattern:
+```tsx
+const [isExpanded, setIsExpanded] = useState(false); // Toggle detail view
+// className includes: bg-white/90, rounded-xl, shadow-lg, hover:shadow-xl, transition-all duration-300
+// Links to external resources use ExternalLink icon (lucide-react)
 ```
 
-**Deployment:** Use `npm run deploy` which runs predeploy hook (`npm run build`) then pushes `dist/` to GitHub Pages. Base path is `/` (root deployment).
+### Sections with Carousels
+[GeoVisualsCarousel.tsx](src/components/sections/GeoVisualsCarousel.tsx) shows carousel pattern:
+- Keyboard navigation: Arrow keys move between items (useEffect listener on window)
+- Renders split-screen layout: lg:grid-cols-5 (2 cols text, 3 cols image)
+- Props: `items` (GeoVisualItem[]), `tabName` (string)
 
-### Build Configuration
-- **Vite config**: Standard React plugin, excludes `lucide-react` from optimization
-- **Tailwind**: Scans `./index.html` and `./src/**/*.{js,ts,jsx,tsx}` for class names
-- **TypeScript**: Strict mode enabled across tsconfig.json, tsconfig.app.json, tsconfig.node.json
-- **ESLint**: Uses latest ESLint 9 with TypeScript, React hooks, and React refresh rules
+### Scroll Listeners
+[Header.tsx](src/components/sections/Header.tsx) demonstrates scroll pattern:
+```tsx
+useEffect(() => {
+  const handleScroll = () => setIsScrolled(window.scrollY > 10);
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+```
 
 ## Styling Conventions
 
-### Tailwind Specifics
-- **Color scheme**: Green (`green-800`, `green-900`, `green-600`) for primary, gradients use green/emerald/amber
-- **Background**: Consistent gradient: `from-green-50 via-emerald-50/50 to-amber-50/30`
-- **Spacing**: Max-width container `max-w-7xl mx-auto`, responsive padding (`px-2 sm:px-4 lg:px-6`)
-- **Transitions**: Use `transition-all duration-300` or `duration-700` for animations; common: hover states with `scale-105`, `shadow-xl`
+**Color Palette:**
+- Primary: Green (`green-800`, `green-900`, `green-600`)
+- Background gradient: `from-green-50 via-emerald-50/50 to-amber-50/30` (set in App.tsx)
+- Cards: `bg-white/90` (semi-transparent white), `rounded-xl`, `shadow-lg`
+- Text: `text-green-900` (headings), `text-gray-700` (body)
 
-### Component Styling Pattern
-```tsx
-className="bg-white/90 rounded-xl overflow-hidden shadow-lg 
-           transition-all duration-300 hover:shadow-xl"
-```
-**Common modifiers:** `/90` or `/80` for transparency, `rounded-xl` for borders, `transition` for interactivity.
+**Common Patterns:**
+- Hover effects: `hover:shadow-xl`, `hover:scale-105`, `hover:text-green-900` with `transition-all duration-300`
+- Transparency modifiers: `/90`, `/80`, `/95` (e.g., `bg-white/90`)
+- Accents: `h-1 w-12 bg-green-600 rounded-full` (divider under section titles)
+- Responsive: `md:grid-cols-2`, `lg:col-span-3`, `max-w-7xl mx-auto px-2 sm:px-4 lg:px-6`
 
-## Icon & UI Libraries
-- **Lucide React**: Used in Header (Menu, Home, User, GraduationCap, Wrench, Briefcase, BookOpen, Map, Mail, Library, ChevronDown, ChevronUp)
-- **React Icons**: Available but usage to be discovered in codebase
-- **Pattern**: Icons are small (`h-3.5 w-3.5` in nav, `h-4 w-4` in cards) and match color scheme
+## External Libraries
 
-## Navigation
-- **Header component**: Fixed nav with scroll-dependent opacity (`bg-white/95` when scrolled)
-- **Smooth scroll**: All nav links trigger smooth scroll to section IDs using `window.scrollY` listener
-- **Mobile layout**: Component structure supports responsive grid (e.g., `md:grid-cols-2`)
+**Icons (Lucide React):**
+Import as needed: `import { ChevronLeft, ExternalLink, Menu, GraduationCap } from 'lucide-react';`
+Used for: navigation, section markers, action buttons. Sizes: `h-3.5 w-3.5` (nav), `h-4 w-4` (cards)
 
-## Adding New Content
-1. **New Section**: Create file in `src/components/sections/`, export as named component, import in `App.tsx`
-2. **New Card Type**: Create in `src/components/cards/`, define TypeScript interface for props
-3. **Hardcoded Data**: Add data object at top of section component; avoid external data sources
-4. **Styling**: Use Tailwind utility classes matching existing green/white/gradient palette
+**Forms (Contact Section):**
+[Contact.tsx](src/components/sections/Contact.tsx) uses **Formspree** + Axios for email:
+- Form ID stored in constant: `const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID'`
+- POST to `https://formspree.io/f/${FORMSPREE_FORM_ID}`
+- Form validation before submit (name, email, message required; email format checked)
+- State: `submitStatus` tracks 'idle' | 'success' | 'error'
 
-## Common Files Reference
-- [App.tsx](src/App.tsx) — Main layout orchestrator
-- [Header.tsx](src/components/sections/Header.tsx) — Navigation with scroll listener pattern
+**Error Handling:**
+Wrap all sections in ErrorBoundary (class component in [ErrorBoundary.tsx](src/components/ui/ErrorBoundary.tsx)). Already applied in App.tsx.
+
+## Adding Features
+
+**New Section:**
+1. Create component in `src/components/sections/YourSection.tsx` (named export)
+2. Import in [App.tsx](src/App.tsx), place between existing sections
+3. Wrap in `<ErrorBoundary>` in App.tsx
+4. Add nav link in Header.tsx with smooth scroll to section ID
+
+**New Data:**
+- If reusable: Add to `src/data/*.ts`, export interface + array
+- If single-use: Define data object within section component
+
+**New Card Type:**
+1. Create in `src/components/cards/YourCard.tsx`
+2. Define TypeScript interface for props
+3. Match styling: `bg-white/90 rounded-xl shadow-lg transition-all duration-300`
+
+## Files Reference
+- [App.tsx](src/App.tsx) — Main layout, gradient background, ErrorBoundaries
+- [Header.tsx](src/components/sections/Header.tsx) — Fixed nav, scroll listener, smooth scroll links
+- [ProjectCard.tsx](src/components/cards/ProjectCard.tsx) — Interactive card with expand/collapse
+- [GeoVisualsCarousel.tsx](src/components/sections/GeoVisualsCarousel.tsx) — Multi-tab carousel with keyboard nav
+- [Contact.tsx](src/components/sections/Contact.tsx) — Form handling with Formspree
+- [geovisuals.ts](src/data/geovisuals.ts) — GeoVisual data structure
 - [Skills.tsx](src/components/sections/Skills.tsx) — Example of data-driven section
 - [ProjectCard.tsx](src/components/cards/ProjectCard.tsx) — Expandable interactive card pattern
 - [tailwind.config.js](tailwind.config.js) — No custom theme extensions; uses defaults

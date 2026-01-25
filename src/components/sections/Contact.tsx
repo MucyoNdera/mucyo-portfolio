@@ -66,17 +66,17 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-white/80">
+    <section id="contact" className="py-12 bg-white/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-green-900 mb-8">Contact Me</h2>
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="space-y-8">
+        <h2 className="text-3xl font-bold text-green-900 mb-4">Contact Me</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold text-green-900 mb-4">Let's Connect</h3>
-              <p className="text-gray-900 mb-6">
+              <h3 className="text-lg font-semibold text-green-900 mb-3">Let's Connect</h3>
+              <p className="text-sm text-gray-900 mb-4">
                 I'm always interested in collaborating on:
               </p>
-              <ul className="space-y-2 text-gray-900">
+              <ul className="space-y-1.5 text-sm text-gray-900">
                 <li>• Environmental and Agricultural Research</li>
                 <li>• GIS and Remote Sensing Consultancy</li>
                 <li>• Environmental Advocacy</li>
@@ -84,8 +84,8 @@ export function Contact() {
               </ul>
             </div>
             
-            <div className="space-y-4">
-              <div className="flex items-center text-gray-900">
+            <div className="space-y-2">
+              <div className="flex items-center text-sm text-gray-900">
                 <MapPin className="h-5 w-5 mr-3 text-green-700" />
                 <span>Kigali, Rwanda</span>
               </div>
@@ -103,20 +103,20 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="flex space-x-6">
+            <div className="flex space-x-4">
               <a href="https://www.linkedin.com/in/mucyo-ndera-tuyizere-3a7968229" aria-label="LinkedIn" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://twitter.com/nderamucyo" aria-label="Twitter" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
-                <Twitter className="h-6 w-6" />
+                <Twitter className="h-5 w-5" />
               </a>
               <a href="https://github.com/MucyoNdera" aria-label="GitHub" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
-                <Github className="h-6 w-6" />
+                <Github className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          <div className="bg-white/90 rounded-xl p-8 shadow-lg">
+          <div className="bg-white/90 rounded-xl p-6 shadow-lg">
             {submitStatus === 'success' && (
               <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md">
                 <p className="text-sm font-medium text-green-800">✓ Message sent successfully! I'll get back to you soon.</p>
@@ -127,44 +127,44 @@ export function Contact() {
                 <p className="text-sm font-medium text-red-800">✗ {errorMessage}</p>
               </div>
             )}
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-900">Name</label>
+                <label htmlFor="name" className="block text-xs font-medium text-gray-900">Name</label>
                 <input
                   type="text"
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="mt-1 block w-full rounded-md border border-green-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-green-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-900">Email</label>
+                <label htmlFor="email" className="block text-xs font-medium text-gray-900">Email</label>
                 <input
                   type="email"
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  className="mt-1 block w-full rounded-md border border-green-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-green-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-900">Message</label>
+                <label htmlFor="message" className="block text-xs font-medium text-gray-900">Message</label>
                 <textarea
                   id="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
+                  rows={3}
                   placeholder="Your message here..."
-                  className="mt-1 block w-full rounded-md border border-green-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-green-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 ></textarea>
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full bg-green-700 text-white py-1.5 px-4 rounded-md text-sm hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>

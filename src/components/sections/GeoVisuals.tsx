@@ -31,10 +31,10 @@ export function GeoVisuals() {
   };
 
   return (
-    <section id="geovisuals" className="py-20 bg-gradient-to-b from-white/80 to-green-50/30">
+    <section id="geovisuals" className="py-12 bg-gradient-to-b from-white/80 to-green-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-12">
+        <div className="mb-8">
           <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4">GeoVisuals</h2>
           <p className="text-lg text-gray-700 max-w-3xl">
             Explore spatial analyses and interactive storytelling showcasing geospatial research, environmental insights, and climate adaptation strategies across Rwanda.
@@ -42,7 +42,7 @@ export function GeoVisuals() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="mb-12 flex flex-wrap gap-3">
+        <div className="mb-8 flex flex-wrap gap-2">
           {tabs.map((tab) => (
             <button
               key={tab.id}
@@ -62,7 +62,7 @@ export function GeoVisuals() {
         </div>
 
         {/* Carousel Container */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+        <div className="bg-white rounded-2xl shadow-lg p-4 md:p-8">
           <GeoVisualsCarousel 
             items={getActiveData()} 
             tabName={getActiveLabel()}
@@ -70,21 +70,21 @@ export function GeoVisuals() {
         </div>
 
         {/* Info Section */}
-        <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <div className="bg-green-50 rounded-lg p-6 border border-green-200">
-            <div className="text-3xl font-bold text-green-700 mb-2">{MAPS.length}</div>
-            <p className="text-gray-700 font-medium">Thematic Maps</p>
-            <p className="text-sm text-gray-600 mt-2">Spatial analyses of agriculture, ecosystems, and land use</p>
+        <div className="mt-8 grid md:grid-cols-3 gap-4">
+          <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+            <div className="text-2xl font-bold text-green-700 mb-1">{MAPS.length}</div>
+            <p className="text-sm text-gray-700 font-medium">Thematic Maps</p>
+            <p className="text-xs text-gray-600 mt-1.5">Spatial analyses of agriculture, ecosystems, and land use</p>
           </div>
-          <div className="bg-blue-50 rounded-lg p-6 border border-blue-200">
-            <div className="text-3xl font-bold text-blue-700 mb-2">{STORYMAPS.length}</div>
-            <p className="text-gray-700 font-medium">Interactive Stories</p>
-            <p className="text-sm text-gray-600 mt-2">Narrative-driven experiences with embedded maps</p>
+          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+            <div className="text-2xl font-bold text-blue-700 mb-1">{STORYMAPS.length}</div>
+            <p className="text-sm text-gray-700 font-medium">Interactive Stories</p>
+            <p className="text-xs text-gray-600 mt-1.5">Narrative-driven experiences with embedded maps</p>
           </div>
-          <div className="bg-amber-50 rounded-lg p-6 border border-amber-200">
-            <div className="text-3xl font-bold text-amber-700 mb-2">{DASHBOARDS.length}</div>
-            <p className="text-gray-700 font-medium">Live Dashboards</p>
-            <p className="text-sm text-gray-600 mt-2">Real-time monitoring and indicator tracking</p>
+          <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+            <div className="text-2xl font-bold text-amber-700 mb-1">{DASHBOARDS.length}</div>
+            <p className="text-sm text-gray-700 font-medium">Live Dashboards</p>
+            <p className="text-xs text-gray-600 mt-1.5">Real-time monitoring and indicator tracking</p>
           </div>
         </div>
       </div>

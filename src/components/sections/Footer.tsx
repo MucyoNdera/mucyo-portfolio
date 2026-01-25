@@ -2,18 +2,18 @@ import React from 'react';
 
 export function Footer() {
   return (
-    <footer className="bg-green-900 text-white py-12">
+    <footer className="bg-green-900 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-xl font-semibold mb-4">Mucyo Ndera Tuyizere</h3>
-            <p className="text-green-100">
+            <h3 className="text-lg font-semibold mb-3">Mucyo Ndera Tuyizere</h3>
+            <p className="text-sm text-green-100">
               Environmental Planning | GIS Analysis | Remote Sensing
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+            <ul className="space-y-1.5 text-sm">
               <li><a href="#about" className="text-green-100 hover:text-white transition-colors duration-150">About</a></li>
               <li><a href="#projects" className="text-green-100 hover:text-white transition-colors duration-150">Projects</a></li>
               <li><a href="#geovisuals" className="text-green-100 hover:text-white transition-colors duration-150">GeoVisuals</a></li>
@@ -21,8 +21,8 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-4">Expertise</h3>
-            <ul className="space-y-2 text-green-100">
+            <h3 className="text-lg font-semibold mb-3">Expertise</h3>
+            <ul className="space-y-1.5 text-sm text-green-100">
             <li>GIS & Remote Sensing</li>
             <li>Data Analysis</li>
               <li>Environmental Planning</li>
