@@ -31,7 +31,7 @@ export function GeoVisuals() {
   };
 
   return (
-    <section id="geovisuals" className="py-12 bg-gradient-to-b from-white/80 to-green-50/30">
+    <section id="geovisuals" className="py-10 bg-gradient-to-b from-white/80 to-green-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -67,25 +67,6 @@ export function GeoVisuals() {
             items={getActiveData()} 
             tabName={getActiveLabel()}
           />
-        </div>
-
-        {/* Info Section */}
-        <div className="mt-8 grid md:grid-cols-3 gap-4">
-          <div className="bg-green-50 rounded-lg p-4 border border-green-200">
-            <div className="text-2xl font-bold text-green-700 mb-1">{MAPS.length}</div>
-            <p className="text-sm text-gray-700 font-medium">Thematic Maps</p>
-            <p className="text-xs text-gray-600 mt-1.5">Spatial analyses of agriculture, ecosystems, and land use</p>
-          </div>
-          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-            <div className="text-2xl font-bold text-blue-700 mb-1">{STORYMAPS.length}</div>
-            <p className="text-sm text-gray-700 font-medium">Interactive Stories</p>
-            <p className="text-xs text-gray-600 mt-1.5">Narrative-driven experiences with embedded maps</p>
-          </div>
-          <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
-            <div className="text-2xl font-bold text-amber-700 mb-1">{DASHBOARDS.length}</div>
-            <p className="text-sm text-gray-700 font-medium">Live Dashboards</p>
-            <p className="text-xs text-gray-600 mt-1.5">Real-time monitoring and indicator tracking</p>
-          </div>
         </div>
       </div>
     </section>
