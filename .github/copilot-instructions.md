@@ -101,18 +101,55 @@ Single-use content (e.g., experience timeline, about paragraph) stays hardcoded 
 - **Consistency:** Hero, About, Experience, Skills, Projects, Publications, GeoVisuals, Contact, Footer all use this pattern
 - **No Overrides:** Removed inline section-level `px-4` (moved to container level)
 
-**Color System:**
-- **Primary:** Greens (`green-900` headings, `green-800` accents, `green-600` links)
-- **Background:** `bg-green-50` (base), cards `bg-white/90` (semi-transparent)
-- **Text:** `text-green-900` (headings), `text-gray-700` (body)
+**Color System: Green / Peanut / Grey**
+
+The portfolio uses a standardized three-color system:
+
+1. **Green (Primary Emphasis):** Section headings (`text-green-900`), primary CTAs (View Project, Send Message), active nav/tab states (`bg-green-700`), accent underlines (`bg-green-600`), focus rings (`focus:ring-green-600`)
+   - Headings: `text-green-900`
+   - Primary buttons: `bg-green-700 text-white hover:bg-green-800`
+   - Active nav: `bg-green-700 text-white`
+   - Accent bars: `bg-green-600 h-1 w-12 rounded-full`
+
+2. **Peanut/Amber (Secondary Accents):** Secondary buttons (StoryMap, Dataset Links), tags/chips (Case Study badges, publication year), hover highlights, secondary icons
+   - Secondary buttons: `bg-amber-600 text-white hover:bg-amber-700` (or peanut equivalents)
+   - Tags/badges: `bg-amber-100 text-amber-700 ring-1 ring-amber-200`
+   - Links: `text-amber-600 hover:text-amber-700`
+   - Hover borders: `hover:border-amber-300`
+
+3. **Grey (Structure & Neutrality):** Default borders, dividers, inactive nav items, muted icons, form input borders (unless focused)
+   - Default borders: `border-gray-200` or `border-gray-300`
+   - Inactive nav: `text-gray-700` or muted styling
+   - Dividers: `border-gray-200`
+   - Form inputs: `border-gray-300` (default), `focus:border-green-500` (active)
+
+4. **Black (Body Text):** All paragraph/description text, project descriptions, publication titles, contact information (use `text-black` not `text-gray-900`)
+   - Body: `text-black`
+   - Descriptions: `text-black`
+   - Labels: `text-gray-900` (for form labels only)
+
+**Application Examples:**
+- Projects card: `border-gray-200` (default) → `hover:border-green-300` (hover) → `focus:ring-green-600` (active)
+- Contact form inputs: `border-gray-300` (default) → `focus:border-green-500 focus:ring-green-500` (active)
+- Publication items: `border-gray-200` (default) → `hover:bg-amber-50 hover:border-amber-300` (hover)
+- GeoVisuals tabs: inactive `border-gray-300`, active `bg-green-700 text-white`
+
+**Background & Cards:**
+- Page background: Gradient `from-green-50 via-emerald-50/50 to-amber-50/30` (in App.tsx)
+- Card backgrounds: `bg-white/90` (semi-transparent white)
+- Section backgrounds: `bg-white/80` or `bg-white`
 
 **Reusable Classes:**
 - Cards: `bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`
 - Hover: `hover:scale-105 hover:text-green-900` (subtle pop + color shift)
 - Accent line: `h-1 w-12 bg-green-600 rounded-full` (decorative under section titles)
-- Responsive spacing: `max-w-7xl mx-auto px-2 sm:px-4 lg:px-8`
+- Focus: `focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2`
 
-**Icon Sizing:** `h-3.5 w-3.5` (nav), `h-4 w-4` (cards/buttons)
+**Icon Sizing & Colors:**
+- `h-3.5 w-3.5` (nav icons), `h-4 w-4` (cards/buttons), `h-5 w-5` (contact section)
+- Primary icons: `text-green-700`
+- Secondary icons: `text-amber-600` or `text-amber-700`
+- Muted/inactive icons: `text-gray-400` or `text-gray-500`
 
 ---
 
