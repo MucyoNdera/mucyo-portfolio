@@ -7,7 +7,7 @@ export function Experience() {
       id: 'exp-1',
       title: 'Climate Change Adaptation Fellow',
       company: 'GanzAfrica Organization',
-      description: 'Bridging cutting-edge technologies with community-driven solutions to advance climate change adaptation, sustainable agriculture, and food security.',
+      description: 'Bridging science with community-driven solutions to advance climate change adaptation, sustainable agriculture, and food security.',
       link: 'https://ganzafrica.org'
     },
     {
