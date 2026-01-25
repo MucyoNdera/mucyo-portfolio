@@ -78,22 +78,22 @@ export const STORYMAPS: GeoVisualItem[] = [
 export const DASHBOARDS: GeoVisualItem[] = [
   {
     id: 'dash-1',
-    title: 'Environmental Monitoring Dashboard',
-    description: 'Real-time monitoring platform tracking key environmental indicators including forest cover, water quality, and land degradation metrics.',
-    keyTakeaway: 'Dashboard-based approach enables rapid decision-making for resource management',
-    tags: ['Monitoring', 'Dashboard', 'Real-time'],
-    image: './images/adaptationteam.jpeg',
-    link: 'https://example.com/dashboard-1',
+    title: 'Kirehe LULC Analysis',
+    description: 'Comprehensive land use and land cover change analysis for Kirehe district showing temporal dynamics from 2010-2035, including predictive modeling of future urban expansion and agricultural intensification patterns.',
+    keyTakeaway: 'Historical trend analysis reveals rapid agricultural expansion and urbanization; future projections indicate 18 Km² city area growth in secondary cities',
+    tags: ['Land Cover', 'Change Detection', 'Urban Growth', 'Prediction'],
+    image: './images/Kirehe_LULC_Dashboard.png',
+    link: 'https://ur-cgis.maps.arcgis.com/apps/dashboards/355deb62df1848f38fc1528fc7ba896e',
     type: 'iframe'
   },
   {
     id: 'dash-2',
-    title: 'Climate Adaptation Indicators',
-    description: 'Interactive dashboard presenting key climate vulnerability and adaptation indicators at district and community levels.',
-    keyTakeaway: 'Multi-scale analysis reveals adaptation capacity gaps and prioritizes interventions',
-    tags: ['Climate', 'Vulnerability', 'Planning'],
-    image: './images/MucyoNderaTuyizere_CARN.jpg',
-    link: 'https://example.com/dashboard-2',
+    title: 'Rwanda Infrastructure Dashboard',
+    description: 'Interactive dashboard displaying Rwanda\'s infrastructure development across provinces, featuring settlement distribution, health facility coverage, and comprehensive spatial analysis of urbanization patterns and provincial development disparities.',
+    keyTakeaway: '3.3k health facilities across provinces; rural settlements dominate (3.2k) while rapid secondary city development underway',
+    tags: ['Infrastructure', 'Health Facilities', 'Settlement', 'Urban Planning'],
+    image: './images/Rwanda_Infrastructure_Dashboard.png',
+    link: 'https://ur-cgis.maps.arcgis.com/apps/dashboards/40e029365e5a49c6822ca57bedc437a3',
     type: 'iframe'
   }
 ];
