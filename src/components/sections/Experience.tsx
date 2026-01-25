@@ -48,7 +48,7 @@ export function Experience() {
                         href={exp.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-amber-700 hover:text-amber-800 text-sm mt-2 transition-colors duration-150"
+                        className="inline-flex items-center text-amber-600 hover:text-amber-700 text-sm mt-2 transition-colors duration-150"
                       >
                         Learn more
                         <ExternalLink className="h-3.5 w-3.5 ml-1.5" />

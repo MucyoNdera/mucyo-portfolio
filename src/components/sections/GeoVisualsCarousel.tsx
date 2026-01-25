@@ -61,10 +61,10 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
 
           {/* Key Takeaway */}
           <div className="bg-green-50 border-l-4 border-green-600 p-4 mb-6 rounded">
-            <p className="text-xs text-green-900 font-semibold uppercase tracking-wider mb-1">
+            <p className="text-xs text-green-700 font-semibold uppercase tracking-wider mb-1">
               Key Takeaway
             </p>
-            <p className="text-sm md:text-base text-gray-900 font-medium">
+            <p className="text-sm md:text-base text-black font-medium">
               {currentItem.keyTakeaway}
             </p>
           </div>
@@ -74,7 +74,7 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
             {currentItem.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-block bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full font-medium"
+                className="inline-block bg-amber-100 text-amber-700 text-xs px-3 py-1 rounded-full font-medium"
               >
                 {tag}
               </span>

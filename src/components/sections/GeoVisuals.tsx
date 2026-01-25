@@ -52,7 +52,7 @@ export function GeoVisuals() {
               className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 ${
                 activeTab === tab.id
                   ? 'bg-green-700 text-white shadow-lg'
-                  : 'bg-white text-green-700 border-2 border-green-200 hover:border-green-400'
+                  : 'bg-white text-green-700 border-2 border-gray-300 hover:border-green-400'
               }`}
             >
               {tab.label}

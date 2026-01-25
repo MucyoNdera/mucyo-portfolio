@@ -45,7 +45,7 @@ export function Projects() {
             placeholder="Search Project with keywords"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all duration-200"
+            className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all duration-200"
           />
         </div>
 
@@ -69,7 +69,7 @@ export function Projects() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="flex-shrink-0 w-80 snap-center bg-white/90 rounded-lg border border-green-100 overflow-hidden transition-all duration-300 hover:border-green-300 hover:shadow-md"
+                className="flex-shrink-0 w-80 snap-center bg-white/90 rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:border-green-300 hover:shadow-md"
               >
                 {/* Image Area */}
                 <div className="h-48 overflow-hidden bg-gray-200 rounded-t-lg">
@@ -94,7 +94,7 @@ export function Projects() {
 
                   {/* Tag */}
                   <div className="flex gap-2">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 ring-1 ring-green-200 w-fit">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700 ring-1 ring-amber-200 w-fit">
                       Case Study
                     </span>
                   </div>
@@ -140,7 +140,7 @@ export function Projects() {
                   {/* Details Button */}
                   <button
                     onClick={() => toggleExpand(project.id)}
-                    className="w-full px-3 py-2 rounded text-sm font-semibold bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-600"
+                    className="w-full px-3 py-2 rounded text-sm font-semibold bg-gray-50 text-green-700 hover:bg-green-50 border border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-600"
                   >
                     {expandedId === project.id ? 'Hide Details' : 'Show Details'}
                   </button>
@@ -148,7 +148,7 @@ export function Projects() {
 
                 {/* Expandable Details */}
                 {expandedId === project.id && (
-                  <div className="border-t border-green-100 px-4 py-4 bg-green-50/30 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="border-t border-gray-200 px-4 py-4 bg-gray-50/30 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
                     <p className="text-sm text-gray-700 leading-relaxed">
                       {project.description}
                     </p>

@@ -7,10 +7,10 @@ export function About() {
         <h2 className="text-3xl font-bold text-green-900 mb-4">About Me</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="text-base md:text-lg leading-relaxed space-y-4">
-            <p className="text-gray-900">
+            <p className="text-black">
               I am an environmental planning professional with three years of experience in climate adaptation, natural resource management, and applied geospatial analysis. My work has included supporting community-driven, nature-based solutions in Musanze District through data-driven approaches to strengthen local climate adaptation, as well as contributing to geospatial research on forest landscape restoration, spatial health, and natural resources management at the University of Rwanda's Centre for Geographic Information Systems and Remote Sensing.
             </p>
-            <p className="text-gray-900">
+            <p className="text-black">
               I hold a Bachelor of Science (Honours) degree in Geography with a specialization in Environmental Planning from the University of Rwanda, and my professional interests focus on sustainable natural resources management, climate adaptation, ecosystem restoration, and community empowerment.
             </p>
           </div>

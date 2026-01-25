@@ -73,10 +73,10 @@ export function Contact() {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-green-900 mb-3">Let's Connect</h3>
-              <p className="text-sm text-gray-900 mb-4">
+              <p className="text-sm text-black mb-4">
                 I'm always interested in collaborating on:
               </p>
-              <ul className="space-y-1.5 text-sm text-gray-900">
+              <ul className="space-y-1.5 text-sm text-black">
                 <li>• Environmental and Agricultural Research</li>
                 <li>• GIS and Remote Sensing Consultancy</li>
                 <li>• Environmental Advocacy</li>
@@ -85,17 +85,17 @@ export function Contact() {
             </div>
             
             <div className="space-y-2">
-              <div className="flex items-center text-sm text-gray-900">
+              <div className="flex items-center text-sm text-black">
                 <MapPin className="h-5 w-5 mr-3 text-green-700" />
                 <span>Kigali, Rwanda</span>
               </div>
-              <div className="flex items-center text-gray-900">
+              <div className="flex items-center text-black">
                 <Mail className="h-5 w-5 mr-3 text-green-700" />
                 <a href="mailto:ndera0021@gmail.com" className="hover:text-green-700 transition-colors duration-150">
                   ndera0021@gmail.com
                 </a>
               </div>
-              <div className="flex items-center text-gray-900">
+              <div className="flex items-center text-black">
                 <Phone className="h-5 w-5 mr-3 text-green-700" />
                 <a href="tel:+250787475900" className="hover:text-green-700 transition-colors duration-150">
                   +250 787 475 900
@@ -136,7 +136,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="mt-0.5 block w-full rounded-md border border-green-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
@@ -147,7 +147,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  className="mt-0.5 block w-full rounded-md border border-green-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
@@ -158,7 +158,7 @@ export function Contact() {
                   onChange={handleChange}
                   rows={3}
                   placeholder="Your message here..."
-                  className="mt-0.5 block w-full rounded-md border border-green-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 ></textarea>
               </div>
               <button
