@@ -5,6 +5,7 @@ import { MapPin } from 'lucide-react';
 export function Hero() {
   return (
     <section 
+      id="hero"
       className="pt-24 pb-16 px-4 relative"
       style={{
       backgroundImage: "url('./images/mucyogishwatia.jpeg')",

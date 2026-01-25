@@ -1,4 +1,5 @@
 import React from 'react';
+import { ErrorBoundary } from './components/ui/ErrorBoundary';
 import { Header } from './components/sections/Header';
 import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
@@ -14,17 +15,39 @@ import { Footer } from './components/sections/Footer';
 function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-emerald-50/50 to-amber-50/30">
-      <Header />
-      <Hero />
-      <About />
-      <Education />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Publications />
-      <GeoVisuals />
-      <Contact />
-      <Footer />
+      <ErrorBoundary>
+        <Header />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Hero />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <About />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Education />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Experience />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Skills />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Projects />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Publications />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <GeoVisuals />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Contact />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <Footer />
+      </ErrorBoundary>
     </div>
   );
 }

@@ -1,7 +1,70 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { MapPin, Mail, Phone, Linkedin, Twitter, Github } from 'lucide-react';
+import axios from 'axios';
+
+// Formspree Form ID - Replace with your form ID from https://formspree.io
+const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID'; // e.g., f/abc123xyz
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    // Validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitStatus('error');
+      setErrorMessage('Please fill in all fields');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Send to Formspree
+      await axios.post(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      });
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } catch (error) {
+      setSubmitStatus('error');
+      setErrorMessage('Failed to send message. Please try again later.');
+      console.error('Formspree error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 bg-white/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,26 +104,39 @@ export function Contact() {
             </div>
 
             <div className="flex space-x-6">
-              <a href="https://www.linkedin.com/in/mucyo-ndera-tuyizere-3a7968229" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
+              <a href="https://www.linkedin.com/in/mucyo-ndera-tuyizere-3a7968229" aria-label="LinkedIn" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="https://twitter.com/nderamucyo" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
+              <a href="https://twitter.com/nderamucyo" aria-label="Twitter" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
                 <Twitter className="h-6 w-6" />
               </a>
-              <a href="https://github.com/MucyoNdera" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
+              <a href="https://github.com/MucyoNdera" aria-label="GitHub" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
                 <Github className="h-6 w-6" />
               </a>
             </div>
           </div>
 
           <div className="bg-white/90 rounded-xl p-8 shadow-lg">
-            <form className="space-y-6">
+            {submitStatus === 'success' && (
+              <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                <p className="text-sm font-medium text-green-800">✓ Message sent successfully! I'll get back to you soon.</p>
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                <p className="text-sm font-medium text-red-800">✗ {errorMessage}</p>
+              </div>
+            )}
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-900">Name</label>
                 <input
                   type="text"
                   id="name"
-                  className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your name"
+                  className="mt-1 block w-full rounded-md border border-green-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
@@ -68,22 +144,29 @@ export function Contact() {
                 <input
                   type="email"
                   id="email"
-                  className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="your.email@example.com"
+                  className="mt-1 block w-full rounded-md border border-green-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-900">Message</label>
                 <textarea
                   id="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={4}
-                  className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  placeholder="Your message here..."
+                  className="mt-1 block w-full rounded-md border border-green-300 px-3 py-2 shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="w-full bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800 transition-colors duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
+                disabled={isSubmitting}
+                className="w-full bg-green-700 text-white py-2 px-4 rounded-md hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

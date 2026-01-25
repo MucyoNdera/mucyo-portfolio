@@ -31,10 +31,12 @@ export function Header() {
             </a>
           </div>
           
-          <div className="flex items-center space-x-2 lg:space-x-4">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
             <a
               href="#"
               onClick={scrollToTop}
+              aria-label="Home"
               className="flex items-center text-green-800 hover:text-green-900 hover:bg-green-50 rounded-md px-2 py-1.5 text-xs font-medium transition-colors duration-150"
             >
               <Home className="h-3.5 w-3.5" />
@@ -48,7 +50,43 @@ export function Header() {
             <NavLink icon={<Map className="h-3.5 w-3.5" />} text="GeoVisuals" />
             <NavLink icon={<Mail className="h-3.5 w-3.5" />} text="Contact" />
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle mobile menu"
+            className="md:hidden text-green-800 hover:text-green-900 p-2"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden pb-4 border-t border-green-100">
+            <div className="flex flex-col space-y-2 pt-2">
+              <a
+                href="#"
+                onClick={(e) => {
+                  scrollToTop(e);
+                  setIsMenuOpen(false);
+                }}
+                className="flex items-center text-green-800 hover:text-green-900 hover:bg-green-50 rounded-md px-3 py-2 text-sm font-medium transition-colors duration-150"
+              >
+                <Home className="h-4 w-4 mr-2" />
+                Home
+              </a>
+              <MobileNavLink icon={<User className="h-4 w-4" />} text="About" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<GraduationCap className="h-4 w-4" />} text="Education" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<Wrench className="h-4 w-4" />} text="Skills" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<Briefcase className="h-4 w-4" />} text="Experience" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<BookOpen className="h-4 w-4" />} text="Projects" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<Library className="h-4 w-4" />} text="Publications" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<Map className="h-4 w-4" />} text="GeoVisuals" onClick={() => setIsMenuOpen(false)} />
+              <MobileNavLink icon={<Mail className="h-4 w-4" />} text="Contact" onClick={() => setIsMenuOpen(false)} />
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
