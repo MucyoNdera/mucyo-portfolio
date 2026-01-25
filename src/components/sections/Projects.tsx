@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
-import { ExternalLink, ChevronDown, ChevronUp, Search, Map, Database } from 'lucide-react';
+import React, { useState, useMemo, useRef } from 'react';
+import { ExternalLink, ChevronLeft, ChevronRight, Search, Map, Database } from 'lucide-react';
 import { PROJECTS } from '../../data/projects';
 
 export function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = useMemo(() => {
     return PROJECTS.filter(project =>
@@ -15,6 +16,20 @@ export function Projects() {
 
   const toggleExpand = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 400;
+      const targetScroll = direction === 'left' 
+        ? scrollContainerRef.current.scrollLeft - scrollAmount
+        : scrollContainerRef.current.scrollLeft + scrollAmount;
+      
+      scrollContainerRef.current.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -34,20 +49,30 @@ export function Projects() {
           />
         </div>
 
-        {/* Compact Media List */}
-        <div className="space-y-3">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-white/90 rounded-lg border border-green-100 overflow-hidden transition-all duration-300 hover:border-green-300 hover:shadow-md"
-            >
-              {/* Project Media Row */}
-              <button
-                onClick={() => toggleExpand(project.id)}
-                className="w-full px-4 py-3 flex items-stretch gap-4 hover:bg-green-50/50 transition-colors duration-200 text-left group"
+        {/* Horizontal Scroll Gallery */}
+        <div className="relative group">
+          {/* Left Arrow Button */}
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 -ml-4 sm:ml-0 bg-white/90 hover:bg-green-50 text-green-700 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-green-600"
+            aria-label="Scroll gallery left"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          {/* Scroll Container */}
+          <div
+            ref={scrollContainerRef}
+            className="overflow-x-auto scroll-smooth snap-x snap-mandatory flex gap-4 pb-4"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="flex-shrink-0 w-80 snap-center bg-white/90 rounded-lg border border-green-100 overflow-hidden transition-all duration-300 hover:border-green-300 hover:shadow-md"
               >
-                {/* Thumbnail - Square, 76px */}
-                <div className="flex-shrink-0 w-[76px] h-[76px] rounded-md overflow-hidden bg-gray-200 ring-1 ring-green-200 shadow-sm group-hover:shadow-md transition-all duration-300">
+                {/* Image Area */}
+                <div className="h-48 overflow-hidden bg-gray-200 rounded-t-lg">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -55,136 +80,47 @@ export function Projects() {
                   />
                 </div>
 
-                {/* Center Content */}
-                <div className="flex-1 min-w-0 flex flex-col justify-center">
-                  <h3 className="text-sm font-semibold text-green-900 group-hover:text-green-700 transition-colors line-clamp-1 mb-1">
+                {/* Card Content */}
+                <div className="p-4 space-y-3">
+                  {/* Title */}
+                  <h3 className="text-base font-semibold text-green-900 line-clamp-1">
                     {project.title}
                   </h3>
-                  <p className="text-xs text-gray-600 line-clamp-2 mb-2">
-                    {project.description.substring(0, 100)}...
+
+                  {/* Summary */}
+                  <p className="text-sm text-gray-600 line-clamp-2">
+                    {project.description.substring(0, 120)}...
                   </p>
+
+                  {/* Tag */}
                   <div className="flex gap-2">
                     <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800 ring-1 ring-green-200 w-fit">
                       Case Study
                     </span>
                   </div>
-                </div>
 
-                {/* Right Actions - Compact on Desktop, Stack on Mobile */}
-                <div className="hidden sm:flex flex-shrink-0 items-center gap-2">
-                  <a
-                    href={project.projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded text-xs font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
-                    title="View Project"
-                  >
-                    <ExternalLink className="h-3.5 w-3.5" />
-                    <span className="hidden md:inline">View</span>
-                  </a>
-                  {project.storymapLink && (
-                    <a
-                      href={project.storymapLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
-                      title="View StoryMap"
-                    >
-                      <Map className="h-3.5 w-3.5" />
-                      <span className="hidden md:inline">Map</span>
-                    </a>
-                  )}
-                  {project.datasetLink && (
-                    <a
-                      href={project.datasetLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded text-xs font-semibold bg-amber-600 text-white hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
-                      title="View Dataset"
-                    >
-                      <Database className="h-3.5 w-3.5" />
-                      <span className="hidden md:inline">Data</span>
-                    </a>
-                  )}
-                </div>
-
-                {/* Expand Indicator */}
-                <div className="flex-shrink-0 flex items-center justify-center">
-                  {expandedId === project.id ? (
-                    <ChevronUp className="h-5 w-5 text-green-700 transition-transform" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-green-600 transition-transform" />
-                  )}
-                </div>
-              </button>
-
-              {/* Mobile Action Buttons - Show on smaller screens */}
-              {!expandedId && (
-                <div className="sm:hidden px-4 py-2 bg-green-50/30 border-t border-green-100 flex gap-2">
-                  <a
-                    href={project.projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-green-700 text-white hover:bg-green-800 transition-all duration-200"
-                  >
-                    <ExternalLink className="h-3 w-3" />
-                    View
-                  </a>
-                  {project.storymapLink && (
-                    <a
-                      href={project.storymapLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200"
-                    >
-                      <Map className="h-3 w-3" />
-                      Map
-                    </a>
-                  )}
-                  {project.datasetLink && (
-                    <a
-                      href={project.datasetLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-amber-600 text-white hover:bg-amber-700 transition-all duration-200"
-                    >
-                      <Database className="h-3 w-3" />
-                      Data
-                    </a>
-                  )}
-                </div>
-              )}
-
-              {/* Expanded Details Panel */}
-              {expandedId === project.id && (
-                <div className="border-t border-green-100 px-4 py-4 bg-green-50/30 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  {/* Action Buttons */}
-                  <div className="flex flex-wrap gap-2">
+                  {/* Compact Action Buttons */}
+                  <div className="flex flex-wrap gap-2 pt-2">
                     <a
                       href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 transition-all duration-200 shadow-sm hover:shadow-md"
+                      className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                      title="View Project"
                     >
-                      <ExternalLink className="h-4 w-4" />
-                      View Project
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      <span className="hidden sm:inline">View</span>
                     </a>
                     {project.storymapLink && (
                       <a
                         href={project.storymapLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition-all duration-200 shadow-sm hover:shadow-md"
+                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                        title="View StoryMap"
                       >
-                        <Map className="h-4 w-4" />
-                        Story Map
+                        <Map className="h-3.5 w-3.5" />
+                        <span className="hidden sm:inline">Map</span>
                       </a>
                     )}
                     {project.datasetLink && (
@@ -192,19 +128,47 @@ export function Projects() {
                         href={project.datasetLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-semibold bg-amber-600 text-white hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-2 transition-all duration-200 shadow-sm hover:shadow-md"
+                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-amber-600 text-white hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                        title="View Dataset"
                       >
-                        <Database className="h-4 w-4" />
-                        Dataset
+                        <Database className="h-3.5 w-3.5" />
+                        <span className="hidden sm:inline">Data</span>
                       </a>
                     )}
                   </div>
+
+                  {/* Details Button */}
+                  <button
+                    onClick={() => toggleExpand(project.id)}
+                    className="w-full px-3 py-2 rounded text-sm font-semibold bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-600"
+                  >
+                    {expandedId === project.id ? 'Hide Details' : 'Show Details'}
+                  </button>
                 </div>
-              )}
-            </div>
-          ))}
+
+                {/* Expandable Details */}
+                {expandedId === project.id && (
+                  <div className="border-t border-green-100 px-4 py-4 bg-green-50/30 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200">
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 -mr-4 sm:mr-0 bg-white/90 hover:bg-green-50 text-green-700 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-green-600"
+            aria-label="Scroll gallery right"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
         </div>
 
+        {/* Empty State */}
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-600">No projects found matching your search.</p>

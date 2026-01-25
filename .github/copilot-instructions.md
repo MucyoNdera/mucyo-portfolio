@@ -71,7 +71,7 @@ Single-use content (e.g., experience timeline, about paragraph) stays hardcoded 
 - Standard pattern: useEffect + cleanup listener on unmount
 
 ### Compact Media List (Option 1)
-[Projects.tsx](src/components/sections/Projects.tsx):
+[Projects.tsx](src/components/sections/Projects.tsx) (deprecated):
 - Row layout: thumbnail (76px square) | center content | right actions | expand indicator
 - Thumbnail: `w-[76px] h-[76px] rounded-md ring-1 ring-green-200 shadow-sm` with `object-cover`
 - Center: title (line-clamp-1), 2-line summary (line-clamp-2), category tag
@@ -80,9 +80,26 @@ Single-use content (e.g., experience timeline, about paragraph) stays hardcoded 
 - Search at top with placeholder "Search Project with keywords"
 - Expand/collapse to show full description and action buttons (desktop style)
 
+### Horizontal Scroll Gallery (Option 3)
+[Projects.tsx](src/components/sections/Projects.tsx):
+- Fixed-width card layout: `w-80 snap-center` with scroll snapping for smooth scrolling
+- Image area: `h-48` fixed height with `object-fit cover` and rounded corners
+- Card content: title (line-clamp-1), 2-line summary, tag chip, compact action buttons
+- Left/Right arrow buttons for one-card scroll; supports mouse wheel, trackpad, touch
+- "Show Details" button reveals full description inside expandable card area
+- Search filters by keyword; placeholder: "Search Project with keywords"
+- Empty state shows message when no projects match search
+
 ---
 
 ## Styling Conventions
+
+**Global Layout & Margins:**
+- **Container:** All sections use `max-w-7xl mx-auto` for centering
+- **Horizontal Padding:** `px-4 sm:px-6 lg:px-8` (responsive padding)
+- **Mobile:** `px-4` (~16px), Tablet: `px-6` (~24px), Desktop: `px-8` (~32px)
+- **Consistency:** Hero, About, Experience, Skills, Projects, Publications, GeoVisuals, Contact, Footer all use this pattern
+- **No Overrides:** Removed inline section-level `px-4` (moved to container level)
 
 **Color System:**
 - **Primary:** Greens (`green-900` headings, `green-800` accents, `green-600` links)
