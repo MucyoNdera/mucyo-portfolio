@@ -6,14 +6,14 @@ export function Experience() {
     {
       id: 'exp-1',
       title: 'Climate Change Adaptation Fellow',
-      company: 'GanzAfrica Organization',
+      company: 'GanzAfrica Foundation',
       description: 'Bridging science with community-driven solutions to advance climate change adaptation, sustainable agriculture, and food security.',
       link: 'https://ganzafrica.org'
     },
     {
       id: 'exp-2',
       title: 'Research Assistant',
-      company: 'University of Rwanda',
+      company: 'University of Rwanda, Center for GIS and Remote Sensing',
       description: 'Led research on environmental planning and forest landscape restoration, leveraging GIS and remote sensing for data analysis, training, and impactful reporting.',
       link: 'https://ur.ac.rw'
     }

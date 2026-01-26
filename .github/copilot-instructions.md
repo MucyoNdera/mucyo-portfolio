@@ -3,10 +3,10 @@
 ## Quick Start
 
 **Essential Commands:**
-- `npm run dev`  Local dev server on http://localhost:5173
-- `npm run build`  Production build to `dist/` folder
-- `npm run deploy`  Deploy built site to GitHub Pages (runs predeploy hook automatically)
-- `npm run lint`  Check code quality (ESLint)
+- `npm run dev` – Local dev server on http://localhost:5173
+- `npm run build` – Production build to `dist/` folder
+- `npm run deploy` – Deploy to GitHub Pages (runs predeploy hook automatically)
+- `npm run lint` – Check code quality (ESLint)
 
 **Tech Stack:** React 18 + TypeScript + Vite + Tailwind CSS + Lucide React + Formspree (emails)  
 **Deployment:** GitHub Pages (`https://MucyoNdera.github.io/mucyo-portfolio`)  
@@ -16,140 +16,140 @@
 
 ## Architecture: Single-Page Scroll Portfolio
 
-**This is NOT a routing app.** It's a stateless, scroll-based portfolio with sections as self-contained components.
+**This is NOT a routing app.** It's a stateless, scroll-based portfolio where each section is independent and manages its own state. No Context API, Redux, or global state—prop drilling is minimal because components are self-contained.
 
-### Data Flow
-1. [App.tsx](src/App.tsx)  Renders all sections wrapped in ErrorBoundary; applies gradient background (`from-green-50 via-emerald-50/50 to-amber-50/30`)
-2. Sections (`src/components/sections/`)  About, Experience, Skills, Projects, GeoVisuals, Contact, etc. Each manages own state
-3. Cards (`src/components/cards/`)  ProjectCard, SkillCard, GeoVisualCard, etc. Handle expandable/interactive UI
-4. Shared UI (`src/components/ui/`)  ErrorBoundary, SkillBar, Card (reusable card wrapper)
-5. Data (`src/data/`)  Externalized TypeScript arrays/interfaces for content-heavy sections
-
-**No Context, Props Drilling, or Global State**  Each section is independent. Data flows downward via props, state lives locally.
+### Key Data Flow
+1. [App.tsx](src/App.tsx) – Renders all 11 sections wrapped in ErrorBoundary; applies gradient background
+2. **Sections** (`src/components/sections/`) – Hero, About, Experience, Skills, Projects, Publications, GeoVisuals, Contact, Footer
+   - Each section independently fetches/imports its data and manages local state
+   - Uses `id` attributes for scroll anchor navigation (Header nav links scroll-to-id)
+3. **Cards** (`src/components/cards/`) – ProjectCard, SkillCard, DatasetCard, StoryMapCard, ExperienceCard, MapCard
+   - Receive data via props; handle expandable/interactive UI with local `useState`
+4. **UI Components** (`src/components/ui/`) – ErrorBoundary, SkillBar, Card
+   - Reusable wrappers and utilities
+5. **Data** (`src/data/`) – Externalized TypeScript files with typed interfaces
+   - Used by carousels, lists, and data-heavy sections
 
 ---
 
 ## Data Patterns
 
-### Externalized Data (in `src/data/`)
-Use for content reused across multiple components or managed by carousels:
-- [geovisuals.ts](src/data/geovisuals.ts): `MAPS`, `STORYMAPS`, `VISUALIZATIONS` (all typed as `GeoVisualItem`)
-  ```typescript
-  export interface GeoVisualItem {
-    id: string; title: string; description: string; keyTakeaway: string;
-    tags: string[]; image: string; link: string; type: 'image' | 'iframe';
-  }
-  ```
-- [projects.ts](src/data/projects.ts): `PROJECTS` (storymaps + datasets; has dual links: storymapLink, datasetLink)
-- [skills.ts](src/data/skills.ts), [publications.ts](src/data/publications.ts): Arrays of objects with consistent interfaces
+### Externalized Data (Use for Content Reuse or Carousels)
+
+**GeoVisuals Data** ([geovisuals.ts](src/data/geovisuals.ts)):
+- **Interface:** `GeoVisualItem` – `{ id, title, description, keyTakeaway, tags, image, link, type: 'image' | 'iframe' }`
+- **Exports:** `MAPS`, `STORYMAPS`, `DASHBOARDS` (each is `GeoVisualItem[]`)
+- **Usage:** Consumed by [GeoVisualsCarousel.tsx](src/components/sections/GeoVisualsCarousel.tsx) to power tab-based carousel with keyboard navigation
+
+**Projects Data** ([projects.ts](src/data/projects.ts)):
+- Contains `PROJECTS` array with storymap + dataset links (dual action buttons)
+- Used by [Projects.tsx](src/components/sections/Projects.tsx) section
+
+**Skills Data** ([skills.ts](src/data/skills.ts)):
+- Organized by category: `gisTools`, `programming`, `webMapping`, `remoteSensing`
+- Each skill has `{ id, name, proficiency }` (proficiency is 0–100)
+- Used by [Skills.tsx](src/components/sections/Skills.tsx) with SkillBar component
+
+**Publications & Other Data** ([publications.ts](src/data/publications.ts)):
+- Similar pattern for publication lists and other reference data
 
 ### Inline/Local Data
-Single-use content (e.g., experience timeline, about paragraph) stays hardcoded in component for simplicity.
+Single-use, static content (e.g., About paragraph, Experience timeline, Contact info) stays hardcoded in component. No need to externalize unless reused or managed by carousels.
 
 ---
 
 ## Component Patterns
 
-### Expandable Cards
-[ProjectCard.tsx](src/components/cards/ProjectCard.tsx) exemplifies the pattern:
-- Local `useState` for `isExpanded` toggle
-- Renders compact view by default; shows full details on expand
-- Always includes ExternalLink icons for action buttons (lucide-react)
-- Uses Tailwind: `bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-all`
+### Expandable Cards (Key Pattern)
+[ProjectCard.tsx](src/components/cards/ProjectCard.tsx):
+```tsx
+const [isExpanded, setIsExpanded] = useState(false);
+// Renders compact by default, full details on expand
+// Tailwind toggles: max-h-0 opacity-0 → max-h-[1000px] opacity-100 (smooth animation)
+```
+- Use `transition-all duration-500 ease-in-out` for expand/collapse animation
+- Wrap expandable content in `<div className={isExpanded ? 'max-h-[1000px]' : 'max-h-0'} ...>`
+- Include ExternalLink icons (lucide-react) for action buttons
 
-### Carousels (Keyboard Navigation)
+### Carousels with Keyboard Navigation
 [GeoVisualsCarousel.tsx](src/components/sections/GeoVisualsCarousel.tsx):
-- Props: `items` (array of GeoVisualItem), `tabName` (for section headings)
-- Tracks `currentIndex` with useState; Left/Right arrow keys navigate
-- `useEffect` listens for keyboard events on window
-- Split-screen layout: `lg:grid-cols-5` (2 cols text + 3 cols image/iframe)
+- Tracks `currentIndex` via `useState`; updates on arrow key press
+- `useEffect` listens for keyboard events; **cleanup on unmount required**
+- Layout: `lg:grid-cols-5` (left: 2 cols text, right: 3 cols image/iframe)
+- Navigation: arrow buttons + keyboard (ArrowLeft/ArrowRight)
+- Tab selection via dot indicators
 
 ### Scroll-Triggered Styling
 [Header.tsx](src/components/sections/Header.tsx):
-- Listens to `window.scroll` event; threshold at `scrollY > 10`
-- Toggles nav background opacity (`bg-white/95` when scrolled, transparent at top)
-- Standard pattern: useEffect + cleanup listener on unmount
+```tsx
+useEffect(() => {
+  const handleScroll = () => setIsScrolled(window.scrollY > 10);
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+```
+- Toggles nav background opacity at scroll threshold
+- **Always cleanup event listeners on component unmount**
 
-### Compact Media List (Option 1)
-[Projects.tsx](src/components/sections/Projects.tsx) (deprecated):
-- Row layout: thumbnail (76px square) | center content | right actions | expand indicator
-- Thumbnail: `w-[76px] h-[76px] rounded-md ring-1 ring-green-200 shadow-sm` with `object-cover`
-- Center: title (line-clamp-1), 2-line summary (line-clamp-2), category tag
-- Right actions (desktop): compact icon buttons with text hidden on small screens; stack on mobile
-- Mobile actions: hidden row below row when collapsed; full buttons in expanded panel
-- Search at top with placeholder "Search Project with keywords"
-- Expand/collapse to show full description and action buttons (desktop style)
-
-### Horizontal Scroll Gallery (Option 3)
-[Projects.tsx](src/components/sections/Projects.tsx):
-- Fixed-width card layout: `w-80 snap-center` with scroll snapping for smooth scrolling
-- Image area: `h-48` fixed height with `object-fit cover` and rounded corners
-- Card content: title (line-clamp-1), 2-line summary, tag chip, compact action buttons
-- Left/Right arrow buttons for one-card scroll; supports mouse wheel, trackpad, touch
-- "Show Details" button reveals full description inside expandable card area
-- Search filters by keyword; placeholder: "Search Project with keywords"
-- Empty state shows message when no projects match search
+### Gallery/List Layouts
+[Projects.tsx](src/components/sections/Projects.tsx) implements horizontal scroll gallery:
+- Fixed-width cards: `w-80 snap-center` with scroll snapping
+- Search filtering at top (filters by title/description keywords)
+- Empty state when no results match
 
 ---
 
 ## Styling Conventions
 
-**Global Layout & Margins:**
-- **Container:** All sections use `max-w-7xl mx-auto` for centering
-- **Horizontal Padding:** `px-4 sm:px-6 lg:px-8` (responsive padding)
-- **Mobile:** `px-4` (~16px), Tablet: `px-6` (~24px), Desktop: `px-8` (~32px)
-- **Consistency:** Hero, About, Experience, Skills, Projects, Publications, GeoVisuals, Contact, Footer all use this pattern
-- **No Overrides:** Removed inline section-level `px-4` (moved to container level)
+### Responsive Layout Pattern
+All sections follow the same structure:
+```tsx
+<section id="section-id" className="py-10 bg-white/80">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* content */}
+  </div>
+</section>
+```
+- Container: `max-w-7xl mx-auto` for horizontal centering
+- Padding: `px-4 sm:px-6 lg:px-8` (mobile ~16px, tablet ~24px, desktop ~32px)
+- Section padding: `py-10` (40px vertical)
+- Background: `bg-white/80` or `bg-white/90` (semi-transparent white)
 
-**Color System: Green / Peanut / Grey**
+### Color System (Strict)
+The portfolio uses **three primary colors** with specific roles:
 
-The portfolio uses a standardized three-color system:
-
-1. **Green (Primary Emphasis):** Section headings (`text-green-900`), primary CTAs (View Project, Send Message), active nav/tab states (`bg-green-700`), accent underlines (`bg-green-600`), focus rings (`focus:ring-green-600`)
+1. **Green (Primary/Emphasis)**
    - Headings: `text-green-900`
-   - Primary buttons: `bg-green-700 text-white hover:bg-green-800`
-   - Active nav: `bg-green-700 text-white`
-   - Accent bars: `bg-green-600 h-1 w-12 rounded-full`
+   - Primary buttons: `bg-green-700 hover:bg-green-800 text-white`
+   - Active nav/tabs: `bg-green-700 text-white`
+   - Accent bars (under titles): `bg-green-600 h-1 w-12 rounded-full`
+   - Focus rings: `focus:ring-green-600`
+   - Icons: `text-green-700`
 
-2. **Peanut/Amber (Secondary Accents):** Secondary buttons (StoryMap, Dataset Links), tags/chips (Case Study badges, publication year), hover highlights, secondary icons
-   - Secondary buttons: `bg-amber-600 text-white hover:bg-amber-700` (or peanut equivalents)
-   - Tags/badges: `bg-amber-100 text-amber-700 ring-1 ring-amber-200`
+2. **Amber/Peanut (Secondary)**
+   - Secondary buttons: `bg-amber-600 hover:bg-amber-700 text-white`
+   - Tags/chips: `bg-amber-100 text-amber-700 ring-1 ring-amber-200`
    - Links: `text-amber-600 hover:text-amber-700`
-   - Hover borders: `hover:border-amber-300`
+   - Hover effects: `hover:border-amber-300`
 
-3. **Grey (Structure & Neutrality):** Default borders, dividers, inactive nav items, muted icons, form input borders (unless focused)
-   - Default borders: `border-gray-200` or `border-gray-300`
-   - Inactive nav: `text-gray-700` or muted styling
+3. **Grey (Structure)**
+   - Borders (default): `border-gray-200` or `border-gray-300`
    - Dividers: `border-gray-200`
-   - Form inputs: `border-gray-300` (default), `focus:border-green-500` (active)
+   - Inactive nav: `text-gray-700`
+   - Form input focus: `focus:border-green-500 focus:ring-green-500`
 
-4. **Black (Body Text):** All paragraph/description text, project descriptions, publication titles, contact information (use `text-black` not `text-gray-900`)
-   - Body: `text-black`
-   - Descriptions: `text-black`
-   - Labels: `text-gray-900` (for form labels only)
+4. **Black (Text)**
+   - Body text/paragraphs: Always use `text-black` (not `text-gray-900`)
+   - Descriptions, titles in cards: `text-black`
 
-**Application Examples:**
-- Projects card: `border-gray-200` (default) → `hover:border-green-300` (hover) → `focus:ring-green-600` (active)
-- Contact form inputs: `border-gray-300` (default) → `focus:border-green-500 focus:ring-green-500` (active)
-- Publication items: `border-gray-200` (default) → `hover:bg-amber-50 hover:border-amber-300` (hover)
-- GeoVisuals tabs: inactive `border-gray-300`, active `bg-green-700 text-white`
+### Reusable Patterns
+- **Card wrapper:** `bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`
+- **Hover effect:** `hover:scale-105 hover:text-green-900 transition-transform`
+- **Section title underline:** `h-1 w-12 bg-green-600 rounded-full`
+- **Focus state:** `focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2`
 
-**Background & Cards:**
-- Page background: Gradient `from-green-50 via-emerald-50/50 to-amber-50/30` (in App.tsx)
-- Card backgrounds: `bg-white/90` (semi-transparent white)
-- Section backgrounds: `bg-white/80` or `bg-white`
-
-**Reusable Classes:**
-- Cards: `bg-white/90 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300`
-- Hover: `hover:scale-105 hover:text-green-900` (subtle pop + color shift)
-- Accent line: `h-1 w-12 bg-green-600 rounded-full` (decorative under section titles)
-- Focus: `focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2`
-
-**Icon Sizing & Colors:**
-- `h-3.5 w-3.5` (nav icons), `h-4 w-4` (cards/buttons), `h-5 w-5` (contact section)
-- Primary icons: `text-green-700`
-- Secondary icons: `text-amber-600` or `text-amber-700`
-- Muted/inactive icons: `text-gray-400` or `text-gray-500`
+### Page Background
+- **Root gradient** (in [App.tsx](src/App.tsx)): `bg-gradient-to-b from-green-50 via-emerald-50/50 to-amber-50/30`
 
 ---
 
@@ -157,44 +157,46 @@ The portfolio uses a standardized three-color system:
 
 ### Form Submission (Formspree + Axios)
 [Contact.tsx](src/components/sections/Contact.tsx):
-- `const FORMSPREE_FORM_ID = 'YOUR_FORMSPREE_ID'` (replace with actual ID from formspree.io)
-- POST to `https://formspree.io/f/${FORMSPREE_FORM_ID}` via axios
-- Validation: name, email, message required; regex check on email format
-- State: `submitStatus` ('idle' | 'success' | 'error'); auto-clears success after 5s
-- Setup docs in [FORMSPREE_SETUP.md](FORMSPREE_SETUP.md)
+- Email form sends via Formspree API: `axios.post('https://formspree.io/f/${FORM_ID}', { name, email, message })`
+- **Setup:** Replace `FORMSPREE_FORM_ID` with your actual form ID from https://formspree.io
+- Validation: Required fields + email regex check
+- State management: `submitStatus` ('idle' | 'success' | 'error'); success auto-clears after 5s
+- Setup guide: [FORMSPREE_SETUP.md](FORMSPREE_SETUP.md)
 
 ### Error Boundaries
-[ErrorBoundary.tsx](src/components/ui/ErrorBoundary.tsx)  Class component catching render errors in child sections. Already wrapped around all sections in App.tsx.
+[ErrorBoundary.tsx](src/components/ui/ErrorBoundary.tsx) – Class component that catches render errors in child components. Every section in [App.tsx](src/App.tsx) is wrapped.
 
 ---
 
 ## Common Workflows
 
 ### Adding a New Section
-1. Create `src/components/sections/MySection.tsx` (named export)
-2. Import in [App.tsx](src/App.tsx); insert before Footer
-3. Wrap in `<ErrorBoundary>` in App.tsx
-4. Add nav link in [Header.tsx](src/components/sections/Header.tsx) with section `id` for scroll anchor
+1. Create component in `src/components/sections/NewSection.tsx` (named export)
+2. Import and add to [App.tsx](src/App.tsx) before Footer, wrapped in `<ErrorBoundary>`
+3. Add scroll anchor: `<section id="section-slug" ...>`
+4. Add nav link in [Header.tsx](src/components/sections/Header.tsx) with matching `id`
 
-### Adding Content to Externalized Data
-1. Edit file in `src/data/` (e.g., add project to `PROJECTS` array)
-2. Import where needed: `import { PROJECTS } from "../../data/projects"`
-3. Map over array in JSX; TypeScript ensures type safety
+### Adding Content to Data Files
+1. Edit file in `src/data/` (e.g., `geovisuals.ts`, `projects.ts`)
+2. TypeScript interfaces ensure type safety; add to appropriate array
+3. Import in consuming component: `import { MAPS } from "../../data/geovisuals"`
+4. Map over array in JSX
 
-### Customizing Styles
-- Update Tailwind config in [tailwind.config.js](tailwind.config.js) for global theme changes
-- Inline Tailwind classes in components; no separate CSS files (convention)
+### Updating Styles
+- **Global theme:** Edit [tailwind.config.js](tailwind.config.js)
+- **Component styles:** Use inline Tailwind classes (no separate CSS files)
+- **Consistency:** Reference existing patterns (e.g., color codes, spacing, shadows)
 
 ---
 
-## Deployment Notes
+## Deployment
 
-**GitHub Pages:**
-- `homepage` in package.json points to deployment URL
-- `npm run deploy` uses gh-pages package; builds first, then pushes `dist/` to gh-pages branch
-- No environment variables needed for public GitHub Pages deployment
+**GitHub Pages (Primary):**
+- Homepage: `https://MucyoNdera.github.io/mucyo-portfolio`
+- Command: `npm run deploy` (builds + pushes to gh-pages branch)
+- No env vars needed
 
-**Alternative: Vercel**
-- See [VERCEL_DEPLOY.md](VERCEL_DEPLOY.md) for quick setup
-- Build command: `npm run build`, Output: `dist/`
-- Can store Formspree ID as env var `VITE_FORMSPREE_ID` for security
+**Vercel (Alternative):**
+- See [VERCEL_DEPLOY.md](VERCEL_DEPLOY.md)
+- Build output: `dist/`
+- Can use `VITE_FORMSPREE_ID` env var for Formspree ID (security)

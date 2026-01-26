@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, Home, User, Wrench, Briefcase, BookOpen, Map, Mail, Library } from 'lucide-react';
+import { Menu, Home, User, Wrench, BookOpen, Map, Mail, Library } from 'lucide-react';
 import { NavLink } from '../layout/NavLink';
 import { MobileNavLink } from '../layout/MobileNavLink';
 
@@ -43,7 +43,6 @@ export function Header() {
             </a>
             <NavLink icon={<User className="h-3.5 w-3.5" />} text="About" />
             <NavLink icon={<Wrench className="h-3.5 w-3.5" />} text="Skills" />
-            <NavLink icon={<Briefcase className="h-3.5 w-3.5" />} text="Experience" />
             <NavLink icon={<BookOpen className="h-3.5 w-3.5" />} text="Projects" />
             <NavLink icon={<Library className="h-3.5 w-3.5" />} text="Publications" />
             <NavLink icon={<Map className="h-3.5 w-3.5" />} text="GeoVisuals" />
@@ -76,7 +75,6 @@ export function Header() {
                 Home
               </a>
               <MobileNavLink icon={<User className="h-4 w-4" />} text="About" onClick={() => setIsMenuOpen(false)} />
-              <MobileNavLink icon={<Briefcase className="h-4 w-4" />} text="Experience" onClick={() => setIsMenuOpen(false)} />
               <MobileNavLink icon={<BookOpen className="h-4 w-4" />} text="Projects" onClick={() => setIsMenuOpen(false)} />
               <MobileNavLink icon={<Library className="h-4 w-4" />} text="Publications" onClick={() => setIsMenuOpen(false)} />
               <MobileNavLink icon={<Map className="h-4 w-4" />} text="GeoVisuals" onClick={() => setIsMenuOpen(false)} />

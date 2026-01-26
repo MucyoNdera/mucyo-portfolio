@@ -3,7 +3,6 @@ import { ErrorBoundary } from './components/ui/ErrorBoundary';
 import { Header } from './components/sections/Header';
 import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
-import { Experience } from './components/sections/Experience';
 import { Skills } from './components/sections/Skills';
 import { Projects } from './components/sections/Projects';
 import { Publications } from './components/sections/Publications';
@@ -22,9 +21,6 @@ function App() {
       </ErrorBoundary>
       <ErrorBoundary>
         <About />
-      </ErrorBoundary>
-      <ErrorBoundary>
-        <Experience />
       </ErrorBoundary>
       <ErrorBoundary>
         <Skills />

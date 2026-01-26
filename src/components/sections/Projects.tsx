@@ -105,22 +105,22 @@ export function Projects() {
                       href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                      className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
                       title="View Project"
                     >
-                      <ExternalLink className="h-3.5 w-3.5" />
-                      <span className="hidden sm:inline">View</span>
+                      <ExternalLink className="h-4 w-4" />
+                      <span>View Project</span>
                     </a>
                     {project.storymapLink && (
                       <a
                         href={project.storymapLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
-                        title="View StoryMap"
+                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                        title="View Story Map"
                       >
-                        <Map className="h-3.5 w-3.5" />
-                        <span className="hidden sm:inline">Map</span>
+                        <Map className="h-4 w-4" />
+                        <span>View Story Map</span>
                       </a>
                     )}
                     {project.datasetLink && (
@@ -128,11 +128,11 @@ export function Projects() {
                         href={project.datasetLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-semibold bg-amber-600 text-white hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-amber-600 text-white hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
                         title="View Dataset"
                       >
-                        <Database className="h-3.5 w-3.5" />
-                        <span className="hidden sm:inline">Data</span>
+                        <Database className="h-4 w-4" />
+                        <span>View Dataset</span>
                       </a>
                     )}
                   </div>
