@@ -2,9 +2,9 @@ import React from 'react';
 import { SKILLS } from '../../data/skills';
 
 const getProficiencyColor = (proficiency: number) => {
-  if (proficiency >= 75) return 'bg-fog text-forest border-moss';
-  if (proficiency >= 60) return 'bg-offwhite text-pine border-sand';
-  return 'bg-sand/40 text-slate border-sand';
+  if (proficiency >= 75) return 'bg-fog text-forest border-moss shadow-sm';
+  if (proficiency >= 60) return 'bg-sand/30 text-slate border-clay shadow-sm';
+  return 'bg-white text-slate border-slate/40 shadow-sm';
 };
 
 const getProficiencyLabel = (proficiency: number) => {
@@ -35,7 +35,7 @@ export function Skills() {
                 {category.skills.map((skill) => (
                   <div
                     key={skill.id}
-                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${getProficiencyColor(
+                    className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 hover:shadow ${getProficiencyColor(
                       skill.proficiency
                     )}`}
                     title={`${skill.name} - ${getProficiencyLabel(skill.proficiency)}`}
