@@ -28,20 +28,6 @@ export function Hero() {
         0009-0005-4249-201X
       </a>
       </div>
-      <div className="flex flex-wrap justify-center gap-3 mb-8">
-        <a
-          href="#projects"
-          className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-sm font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-black/30 transition-all duration-150"
-        >
-          View Projects
-        </a>
-        <a
-          href="#contact"
-          className="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-sm font-semibold bg-amber-600 text-white hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:ring-offset-black/30 transition-all duration-150"
-        >
-          Contact Me
-        </a>
-      </div>
       <div className="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
       {[
         "Science",

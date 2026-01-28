@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { GeoVisualItem } from '../../data/geovisuals';
 
@@ -12,10 +12,16 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
   const currentItem = items[currentIndex];
 
   const goToNext = () => {
+    if (items.length === 0) {
+      return;
+    }
     setCurrentIndex((prev) => (prev + 1) % items.length);
   };
 
   const goToPrevious = () => {
+    if (items.length === 0) {
+      return;
+    }
     setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
   };
 
@@ -24,6 +30,10 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
       setCurrentIndex(index);
     }
   };
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [items]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'ArrowLeft') goToPrevious();
