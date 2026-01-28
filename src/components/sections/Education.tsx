@@ -4,7 +4,7 @@ import { GraduationCap, ExternalLink } from 'lucide-react';
 export function Education() {
   return (
     <section id="education" className="py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="page-container">
         <h2 className="text-3xl font-bold text-green-900 mb-8">Education</h2>
         <div className="bg-white/80 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
           <div className="flex items-start gap-4">

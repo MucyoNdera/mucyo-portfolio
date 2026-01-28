@@ -54,7 +54,7 @@ export function ProjectCard({ title, description, image, projectLink, storymapLi
             rel="noopener noreferrer"
             className="text-amber-700 hover:text-amber-800 flex items-center transition-colors duration-150 text-sm"
           >
-            Visit Project
+            View Project
             <ExternalLink className="h-3 w-3 ml-1" />
           </a>
           {storymapLink && (
@@ -62,16 +62,16 @@ export function ProjectCard({ title, description, image, projectLink, storymapLi
               href={storymapLink}
               className="text-green-700 hover:text-green-800 flex items-center transition-colors duration-150 text-sm"
             >
-              StoryMap
+              View Story Map
               <Map className="h-3 w-3 ml-1" />
             </a>
           )}
           {datasetLink && (
             <a 
               href={datasetLink}
-              className="text-blue-700 hover:text-blue-800 flex items-center transition-colors duration-150 text-sm"
+              className="text-amber-700 hover:text-amber-800 flex items-center transition-colors duration-150 text-sm"
             >
-              Dataset
+              View Dataset
               <Database className="h-3 w-3 ml-1" />
             </a>
           )}

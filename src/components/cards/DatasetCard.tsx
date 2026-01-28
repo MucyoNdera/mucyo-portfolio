@@ -18,7 +18,7 @@ export function DatasetCard({ title, description, link }: DatasetCardProps) {
         rel="noopener noreferrer"
         className="inline-flex items-center text-amber-600 hover:text-amber-700 transition-colors duration-150"
       >
-        Download Dataset
+        View Dataset
         <Database className="h-4 w-4 ml-2" />
       </a>
     </div>

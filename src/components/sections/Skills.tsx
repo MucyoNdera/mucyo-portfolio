@@ -23,7 +23,7 @@ export function Skills() {
 
   return (
     <section id="skills" className="py-12 bg-white/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="page-container">
         <h2 className="text-3xl font-bold text-green-900 mb-6">Geospatial Skills</h2>
         
         {/* Skills grid by category */}

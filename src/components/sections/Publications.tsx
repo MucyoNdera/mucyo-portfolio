@@ -4,7 +4,7 @@ import { PUBLICATIONS } from '../../data/publications';
 export function Publications() {
   return (
     <section id="publications" className="py-6 bg-white/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="page-container">
         <h2 className="text-3xl font-bold text-green-900 mb-4">Publications</h2>
         <div className="space-y-1.5">
           {PUBLICATIONS.map((pub, index) => (

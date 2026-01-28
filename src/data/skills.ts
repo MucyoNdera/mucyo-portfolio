@@ -5,7 +5,7 @@ export const SKILLS = {
     { id: 'arcgis-online', name: 'ArcGIS Online', proficiency: 80 }
   ],
   programming: [
-    { id: 'python', name: 'Python', proficiency: 50 },
+    { id: 'python', name: 'Python', proficiency: 60 },
     { id: 'r', name: 'R', proficiency: 60 },
     { id: 'sql', name: 'SQL', proficiency: 50 }
   ],

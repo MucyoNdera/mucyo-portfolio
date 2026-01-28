@@ -34,7 +34,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="page-container">
         <h2 className="text-3xl font-bold text-green-900 mb-8">Projects</h2>
         
         {/* Search Input */}
@@ -116,7 +116,7 @@ export function Projects() {
                         href={project.storymapLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
                         title="View Story Map"
                       >
                         <Map className="h-4 w-4" />

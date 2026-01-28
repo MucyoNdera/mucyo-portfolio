@@ -3,7 +3,7 @@ import React from 'react';
 export function Footer() {
   return (
     <footer className="bg-green-900 text-white py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="page-container">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-lg font-semibold mb-3">Mucyo Ndera Tuyizere</h3>

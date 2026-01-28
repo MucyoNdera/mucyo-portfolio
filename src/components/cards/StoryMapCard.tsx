@@ -26,7 +26,7 @@ export function StoryMapCard({ title, image, link, type = 'storymap' }: StoryMap
           <div>
             <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
             <span className="inline-flex items-center text-white/90 text-sm">
-              {type === 'dashboard' ? 'View Dashboard' : 'View StoryMap'}
+              {type === 'dashboard' ? 'View Dashboard' : 'View Story Map'}
               <ExternalLink className="h-4 w-4 ml-2" />
             </span>
           </div>
