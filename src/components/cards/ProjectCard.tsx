@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, ChevronDown, ChevronUp, Map, Database } from 'lucide-react';
+import { ExternalLink, ChevronDown, ChevronUp, Map } from 'lucide-react';
 
 interface ProjectCardProps {
   title: string;
@@ -7,10 +7,9 @@ interface ProjectCardProps {
   image: string;
   projectLink: string;
   storymapLink?: string;
-  datasetLink?: string;
 }
 
-export function ProjectCard({ title, description, image, projectLink, storymapLink, datasetLink }: ProjectCardProps) {
+export function ProjectCard({ title, description, image, projectLink, storymapLink }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -64,15 +63,6 @@ export function ProjectCard({ title, description, image, projectLink, storymapLi
             >
               View Story Map
               <Map className="h-3 w-3 ml-1" />
-            </a>
-          )}
-          {datasetLink && (
-            <a 
-              href={datasetLink}
-              className="text-amber-700 hover:text-amber-800 flex items-center transition-colors duration-150 text-sm"
-            >
-              View Dataset
-              <Database className="h-3 w-3 ml-1" />
             </a>
           )}
         </div>

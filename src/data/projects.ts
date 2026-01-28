@@ -6,7 +6,6 @@ export const PROJECTS = [
     image: "./images/adaptationteam.jpeg",
     projectLink: "https://ganzafrica.org/projects/the-climate-adaptation-project-in-musanze-district-rwanda/",
     storymapLink: "https://storymaps.arcgis.com/stories/d15dd9b68d9f4cd595b300fa5edbe0b8",
-    datasetLink: "#climate-dataset"
   },
   {
     id: 'proj-2',
@@ -15,6 +14,5 @@ export const PROJECTS = [
     image: "./images/MucyoNderaTuyizere_CARN.jpg",
     projectLink: "https://conservationactionresearch.net/project/mucyo-ndera-tuyizere",
     storymapLink: "https://storymaps.arcgis.com/stories/59ec67e48507448a82e5339be2ebb78c",
-    datasetLink: "#forest-dataset"
   }
 ];
