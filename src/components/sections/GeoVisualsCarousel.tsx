@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { GeoVisualItem } from '../../data/geovisuals';
 
@@ -10,17 +10,6 @@ interface GeoVisualsCarouselProps {
 export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentItem = items[currentIndex];
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') goToPrevious();
-      if (e.key === 'ArrowRight') goToNext();
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, items.length]);
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % items.length);
@@ -36,22 +25,32 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowLeft') goToPrevious();
+    if (e.key === 'ArrowRight') goToNext();
+  };
+
   if (!currentItem) {
     return <div className="text-center text-gray-500 py-12">No items available</div>;
   }
 
   return (
-    <div className="w-full">
+    <div
+      className="w-full"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      aria-label={`GeoVisuals carousel for ${tabName}`}
+    >
       {/* Main carousel container - split screen */}
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8 items-center min-h-96">
         {/* Left side (40%) - Text content */}
         <div className="lg:col-span-2 flex flex-col justify-between">
           {/* Title */}
           <div className="mb-6">
-            <h3 className="text-2xl md:text-3xl font-bold text-green-900 mb-2 leading-tight">
+            <h3 className="text-2xl md:text-3xl font-bold text-forest mb-2 leading-tight">
               {currentItem.title}
             </h3>
-            <div className="h-1 w-12 bg-green-600 rounded-full"></div>
+            <div className="h-1 w-12 bg-moss rounded-full"></div>
           </div>
 
           {/* Description */}
@@ -60,11 +59,11 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
           </p>
 
           {/* Key Takeaway */}
-          <div className="bg-green-50 border-l-4 border-green-600 p-4 mb-6 rounded">
-            <p className="text-xs text-green-700 font-semibold uppercase tracking-wider mb-1">
+          <div className="bg-fog border-l-4 border-moss p-4 mb-6 rounded">
+            <p className="text-xs text-moss font-semibold uppercase tracking-wider mb-1">
               Key Takeaway
             </p>
-            <p className="text-sm md:text-base text-black font-medium">
+            <p className="text-sm md:text-base text-slate font-medium">
               {currentItem.keyTakeaway}
             </p>
           </div>
@@ -74,7 +73,7 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
             {currentItem.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-block bg-amber-100 text-amber-700 text-xs px-3 py-1 rounded-full font-medium"
+                className="inline-block bg-sand/40 text-slate text-xs px-3 py-1 rounded-full font-medium"
               >
                 {tag}
               </span>
@@ -87,7 +86,7 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`View ${currentItem.title} in full`}
-            className="inline-flex items-center justify-center bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-150 w-full md:w-auto mb-6 md:mb-0"
+            className="inline-flex items-center justify-center bg-forest hover:bg-pine text-white font-medium py-3 px-6 rounded-lg transition-colors duration-150 w-full md:w-auto mb-6 md:mb-0"
           >
             View Full {currentItem.type === 'iframe' ? 'StoryMap' : 'Image'}
             <ExternalLink className="ml-2 h-4 w-4" />
@@ -102,6 +101,8 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
                 src={currentItem.image}
                 alt={currentItem.title}
                 className="w-full h-auto object-cover aspect-square md:aspect-auto md:min-h-96"
+                loading="lazy"
+                decoding="async"
               />
             ) : (
               <div className="relative w-full" style={{ paddingBottom: '75%' }}>
@@ -125,19 +126,19 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
           <button
             onClick={goToPrevious}
             aria-label={`View previous ${tabName}`}
-            title="Previous (← arrow key)"
-            className="p-2 hover:bg-green-50 rounded-full transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+            title="Previous (left arrow key)"
+            className="p-2 hover:bg-fog rounded-full transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#4c7a5a] focus:ring-offset-2"
           >
-            <ChevronLeft className="h-6 w-6 text-green-700 hover:text-green-900" />
+            <ChevronLeft className="h-6 w-6 text-moss hover:text-forest" />
           </button>
 
           <button
             onClick={goToNext}
             aria-label={`View next ${tabName}`}
-            title="Next (→ arrow key)"
-            className="p-2 hover:bg-green-50 rounded-full transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2"
+            title="Next (right arrow key)"
+            className="p-2 hover:bg-fog rounded-full transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#4c7a5a] focus:ring-offset-2"
           >
-            <ChevronRight className="h-6 w-6 text-green-700 hover:text-green-900" />
+            <ChevronRight className="h-6 w-6 text-moss hover:text-forest" />
           </button>
         </div>
 
@@ -155,9 +156,9 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
                 onClick={() => goToItem(index)}
                 aria-label={`Go to ${tabName} ${index + 1}`}
                 aria-current={index === currentIndex}
-                className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-green-600 ${
+                className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#4c7a5a] ${
                   index === currentIndex
-                    ? 'bg-green-700 w-8'
+                    ? 'bg-forest w-8'
                     : 'bg-gray-300 hover:bg-gray-400 w-2'
                 }`}
               />
@@ -167,7 +168,7 @@ export function GeoVisualsCarousel({ items, tabName }: GeoVisualsCarouselProps) 
 
         {/* Info text */}
         <div className="text-xs text-gray-500">
-          Use ← → to navigate
+          Use left/right arrow keys to navigate
         </div>
       </div>
     </div>

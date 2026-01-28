@@ -33,9 +33,9 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16">
+    <section id="projects" className="py-12">
       <div className="page-container">
-        <h2 className="text-3xl font-bold text-green-900 mb-8">Projects</h2>
+        <h2 className="text-3xl font-bold text-forest mb-8">Projects</h2>
         
         {/* Search Input */}
         <div className="mb-8 relative">
@@ -45,7 +45,7 @@ export function Projects() {
             placeholder="Search Project with keywords"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition-all duration-200"
+            className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4c7a5a] focus:border-transparent transition-all duration-200"
           />
         </div>
 
@@ -54,7 +54,7 @@ export function Projects() {
           {/* Left Arrow Button */}
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 -ml-4 sm:ml-0 bg-white/90 hover:bg-green-50 text-green-700 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-green-600"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 -ml-4 sm:ml-0 bg-white/90 hover:bg-fog text-moss rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-[#4c7a5a]"
             aria-label="Scroll gallery left"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -69,7 +69,7 @@ export function Projects() {
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
-                className="flex-shrink-0 w-80 snap-center bg-white/90 rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:border-green-300 hover:shadow-md"
+                className="flex-shrink-0 w-80 snap-center bg-white/90 rounded-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:border-sand/70 hover:shadow-md"
               >
                 {/* Image Area */}
                 <div className="h-48 overflow-hidden bg-gray-200 rounded-t-lg">
@@ -77,24 +77,28 @@ export function Projects() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
                 {/* Card Content */}
                 <div className="p-4 space-y-3">
                   {/* Title */}
-                  <h3 className="text-base font-semibold text-green-900 line-clamp-1">
+                  <h3 className="text-base font-semibold text-forest line-clamp-1">
                     {project.title}
                   </h3>
 
                   {/* Summary */}
                   <p className="text-sm text-gray-600 line-clamp-2">
-                    {project.description.substring(0, 120)}...
+                    {project.description.length > 120
+                      ? `${project.description.substring(0, 120)}...`
+                      : project.description}
                   </p>
 
                   {/* Tag */}
                   <div className="flex gap-2">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-700 ring-1 ring-amber-200 w-fit">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-sand/40 text-slate ring-1 ring-sand w-fit">
                       Case Study
                     </span>
                   </div>
@@ -105,7 +109,7 @@ export function Projects() {
                       href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                      className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-forest text-white hover:bg-pine focus:outline-none focus:ring-2 focus:ring-[#4c7a5a] focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
                       title="View Project"
                     >
                       <ExternalLink className="h-4 w-4" />
@@ -116,7 +120,7 @@ export function Projects() {
                         href={project.storymapLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-green-700 text-white hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
+                        className="flex-1 min-w-max inline-flex items-center justify-center gap-1 px-3 py-2 rounded text-sm font-semibold bg-forest text-white hover:bg-pine focus:outline-none focus:ring-2 focus:ring-[#4c7a5a] focus:ring-offset-1 transition-all duration-200 shadow-sm hover:shadow"
                         title="View Story Map"
                       >
                         <Map className="h-4 w-4" />
@@ -128,7 +132,7 @@ export function Projects() {
                   {/* Details Button */}
                   <button
                     onClick={() => toggleExpand(project.id)}
-                    className="w-full px-3 py-2 rounded text-sm font-semibold bg-gray-50 text-green-700 hover:bg-green-50 border border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-600"
+                    className="w-full px-3 py-2 rounded text-sm font-semibold bg-gray-50 text-moss hover:bg-fog border border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#4c7a5a]"
                   >
                     {expandedId === project.id ? 'Hide Details' : 'Show Details'}
                   </button>
@@ -149,7 +153,7 @@ export function Projects() {
           {/* Right Arrow Button */}
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 -mr-4 sm:mr-0 bg-white/90 hover:bg-green-50 text-green-700 rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-green-600"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 -mr-4 sm:mr-0 bg-white/90 hover:bg-fog text-moss rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-[#4c7a5a]"
             aria-label="Scroll gallery right"
           >
             <ChevronRight className="h-5 w-5" />

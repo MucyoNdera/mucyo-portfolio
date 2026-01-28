@@ -13,7 +13,7 @@ export const MAPS: GeoVisualItem[] = [
   {
     id: 'map-1',
     title: 'Maize Suitability Assessment',
-    description: 'Spatial multi-criteriaanalysis identifying optimal zones for maize cultivation based on environmental, climatic, soil, and topographic variables.',
+    description: 'Spatial multi-criteria analysis identifying optimal zones for maize cultivation based on environmental, climatic, soil, and topographic variables.',
     keyTakeaway: 'High-suitability areas concentrated in central and western highlands',
     tags: ['Agriculture', 'Suitability', 'Crop Planning'],
     image: './images/image5.jpg',
@@ -23,7 +23,7 @@ export const MAPS: GeoVisualItem[] = [
   {
     id: 'map-2',
     title: 'Wetland Health Index (WHI)',
-    description: 'Spatial-multicriteria Assessment of wetland ecosystem health, combining environmental, social-economic, climatic, and soil factors,.',
+    description: 'Spatial multi-criteria assessment of wetland ecosystem health, combining environmental, socio-economic, climatic, and soil factors.',
     keyTakeaway: 'Wetland degradation concentrated near urban centers, Bareland and agricultural zones',
     tags: ['Wetlands', 'Ecosystem Health', 'Conservation'],
     image: './images/Wetland Health Index.jpg',
@@ -33,7 +33,7 @@ export const MAPS: GeoVisualItem[] = [
   {
     id: 'map-3',
     title: 'Land Use and Land Cover Classification',
-    description: 'Multi-spectral classification showing current land cover types including forests, agriculture, urban areas, barren land, glass land and water bodies.',
+    description: 'Multi-spectral classification showing current land cover types including forests, agriculture, urban areas, barren land, grassland, and water bodies.',
     keyTakeaway: '48% of study area under agricultural use',
     tags: ['LULC', 'Land Cover', 'Monitoring'],
     image: './images/Current land use land cover.jpg',
@@ -43,7 +43,7 @@ export const MAPS: GeoVisualItem[] = [
   {
     id: 'map-4',
     title: 'Vegetation Cover in Volcanoes National Park',
-    description: 'Vegetation mapping and classification using sentinel-2A imagery, maximum likelihood classification method  in ArcGIS Pro.',
+    description: 'Vegetation mapping and classification using Sentinel-2A imagery with a maximum likelihood classification method in ArcGIS Pro.',
     keyTakeaway: 'Dense forest cover maintained in protected core; edge-to-interior gradient detected',
     tags: ['Protected Areas', 'Vegetation', 'Biodiversity'],
     image: './images/Landcove types.jpg',
@@ -79,7 +79,7 @@ export const DASHBOARDS: GeoVisualItem[] = [
   {
     id: 'dash-1',
     title: 'Kirehe LULC Analysis',
-    description: 'Land use and land cover change analysis for Kirehe district showing temporal dynamics from 2010-2035, including predictive modeling of future urban expansion and agricultural patterns perfomed in ArcGIS Pro and Quantum GIS.',
+    description: 'Land use and land cover change analysis for Kirehe district showing temporal dynamics from 2010-2035, including predictive modeling of future urban expansion and agricultural patterns performed in ArcGIS Pro and QGIS.',
     keyTakeaway: 'Historical trend analysis reveals rapid agricultural expansion and urbanization; future projections provided insights about city area growth in 2035',
     tags: ['Land Cover', 'Change Detection', 'Urban Growth', 'Prediction'],
     image: './images/Kirehe_LULC_Dashboard.png',

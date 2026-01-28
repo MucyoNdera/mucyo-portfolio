@@ -10,7 +10,7 @@ export function NavLink({ icon, text }: NavLinkProps) {
     <a
       href={`#${text.toLowerCase()}`}
       aria-label={text}
-      className="flex items-center text-green-800 hover:text-green-900 hover:bg-green-50 rounded-md px-2 py-1.5 text-xs font-medium transition-colors duration-150"
+      className="flex items-center text-forest hover:text-pine hover:bg-fog rounded-md px-2 py-1.5 text-xs font-medium transition-colors duration-150"
     >
       {icon}
       <span className="ml-1">{text}</span>

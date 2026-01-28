@@ -66,51 +66,51 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-10 bg-white/80">
+    <section id="contact" className="py-12 bg-white/80">
       <div className="page-container">
-        <h2 className="text-3xl font-bold text-green-900 mb-4">Contact Me</h2>
+        <h2 className="text-3xl font-bold text-forest mb-4">Contact Me</h2>
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-green-900 mb-3">Let's Connect</h3>
-              <p className="text-sm text-black mb-4">
+              <h3 className="text-lg font-semibold text-forest mb-3">Let's Connect</h3>
+              <p className="text-sm text-gray-900 mb-4">
                 I'm always interested in collaborating on:
               </p>
-              <ul className="space-y-1.5 text-sm text-black">
-                <li>• Environmental and Agricultural Research</li>
-                <li>• GIS and Remote Sensing Consultancy</li>
-                <li>• Environmental Advocacy</li>
-                <li>• Volunteering Opportunities</li>
+              <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-900">
+                <li>Environmental and Agricultural Research</li>
+                <li>GIS and Remote Sensing Consultancy</li>
+                <li>Environmental Advocacy</li>
+                <li>Volunteering Opportunities</li>
               </ul>
             </div>
             
             <div className="space-y-2">
-              <div className="flex items-center text-sm text-black">
-                <MapPin className="h-5 w-5 mr-3 text-green-700" />
+              <div className="flex items-center text-sm text-gray-900">
+                <MapPin className="h-5 w-5 mr-3 text-moss" />
                 <span>Kigali, Rwanda</span>
               </div>
-              <div className="flex items-center text-black">
-                <Mail className="h-5 w-5 mr-3 text-green-700" />
-                <a href="mailto:ndera0021@gmail.com" className="hover:text-green-700 transition-colors duration-150">
+              <div className="flex items-center text-gray-900">
+                <Mail className="h-5 w-5 mr-3 text-moss" />
+                <a href="mailto:ndera0021@gmail.com" className="hover:text-forest transition-colors duration-150">
                   ndera0021@gmail.com
                 </a>
               </div>
-              <div className="flex items-center text-black">
-                <Phone className="h-5 w-5 mr-3 text-green-700" />
-                <a href="tel:+250787475900" className="hover:text-green-700 transition-colors duration-150">
+              <div className="flex items-center text-gray-900">
+                <Phone className="h-5 w-5 mr-3 text-moss" />
+                <a href="tel:+250787475900" className="hover:text-forest transition-colors duration-150">
                   +250 787 475 900
                 </a>
               </div>
             </div>
 
             <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/in/mucyo-ndera-tuyizere-3a7968229" aria-label="LinkedIn" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
+              <a href="https://www.linkedin.com/in/mucyo-ndera-tuyizere-3a7968229" aria-label="LinkedIn" className="text-moss hover:text-forest transform transition-transform duration-150 hover:scale-110">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="https://twitter.com/nderamucyo" aria-label="Twitter" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
+              <a href="https://twitter.com/nderamucyo" aria-label="Twitter" className="text-moss hover:text-forest transform transition-transform duration-150 hover:scale-110">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://github.com/MucyoNdera" aria-label="GitHub" className="text-green-700 hover:text-green-800 transform transition-transform duration-150 hover:scale-110">
+              <a href="https://github.com/MucyoNdera" aria-label="GitHub" className="text-moss hover:text-forest transform transition-transform duration-150 hover:scale-110">
                 <Github className="h-5 w-5" />
               </a>
             </div>
@@ -118,13 +118,13 @@ export function Contact() {
 
           <div className="bg-white/90 rounded-xl p-6 shadow-lg">
             {submitStatus === 'success' && (
-              <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md">
-                <p className="text-sm font-medium text-green-800">✓ Message sent successfully! I'll get back to you soon.</p>
+              <div className="mb-4 p-4 bg-fog border border-sand rounded-md">
+                <p className="text-sm font-medium text-forest">Message sent successfully! I'll get back to you soon.</p>
               </div>
             )}
             {submitStatus === 'error' && (
               <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
-                <p className="text-sm font-medium text-red-800">✗ {errorMessage}</p>
+                <p className="text-sm font-medium text-red-800">Error: {errorMessage}</p>
               </div>
             )}
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
@@ -136,7 +136,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-[#4c7a5a] focus:ring focus:ring-[#4c7a5a] focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
@@ -147,7 +147,7 @@ export function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-[#4c7a5a] focus:ring focus:ring-[#4c7a5a] focus:ring-opacity-50 transition-colors duration-150"
                 />
               </div>
               <div>
@@ -158,13 +158,13 @@ export function Contact() {
                   onChange={handleChange}
                   rows={3}
                   placeholder="Your message here..."
-                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-green-500 focus:ring focus:ring-green-500 focus:ring-opacity-50 transition-colors duration-150"
+                  className="mt-0.5 block w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm shadow-sm focus:border-[#4c7a5a] focus:ring focus:ring-[#4c7a5a] focus:ring-opacity-50 transition-colors duration-150"
                 ></textarea>
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-green-700 text-white py-1.5 px-4 rounded-md text-sm hover:bg-green-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full bg-forest text-white py-1.5 px-4 rounded-md text-sm hover:bg-pine disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-150 transform hover:scale-[1.01] active:scale-[0.99]"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>

@@ -31,11 +31,11 @@ export function GeoVisuals() {
   };
 
   return (
-    <section id="geovisuals" className="py-10 bg-gradient-to-b from-white/80 to-green-50/30">
+    <section id="geovisuals" className="py-12 bg-gradient-to-b from-white/80 to-green-50/30">
       <div className="page-container">
         {/* Header */}
         <div className="mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-green-900 mb-4">GeoVisuals</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-forest mb-4">GeoVisuals</h2>
           <p className="text-lg text-gray-700 max-w-3xl">
             Explore spatial analyses and interactive storytelling showcasing geospatial outputs, research, forest landscape restoration, and climate adaptation strategies across Rwanda.
           </p>
@@ -49,10 +49,10 @@ export function GeoVisuals() {
               onClick={() => setActiveTab(tab.id)}
               aria-selected={activeTab === tab.id}
               aria-label={`View ${tab.label} (${tab.count} items)`}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 ${
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4c7a5a] ${
                 activeTab === tab.id
-                  ? 'bg-green-700 text-white shadow-lg'
-                  : 'bg-white text-green-700 border-2 border-gray-300 hover:border-green-400'
+                  ? 'bg-forest text-white shadow-lg'
+                  : 'bg-white text-moss border-2 border-gray-300 hover:border-sand'
               }`}
             >
               {tab.label}

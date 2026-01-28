@@ -2,8 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --forest: #1f3b2c;
+  --pine: #2e5a43;
+  --moss: #4c7a5a;
+  --clay: #8a6a4d;
+  --sand: #cbb79f;
+  --slate: #3f4a44;
+  --fog: #e6e9e5;
+  --offwhite: #f7f6f2;
+}
+
 @layer components {
   .page-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .text-forest {
+    color: var(--forest);
+  }
+  .text-pine {
+    color: var(--pine);
+  }
+  .text-moss {
+    color: var(--moss);
+  }
+  .text-slate {
+    color: var(--slate);
+  }
+
+  .bg-forest {
+    background-color: var(--forest);
+  }
+  .bg-pine {
+    background-color: var(--pine);
+  }
+  .bg-moss {
+    background-color: var(--moss);
+  }
+  .bg-clay {
+    background-color: var(--clay);
+  }
+  .bg-sand {
+    background-color: var(--sand);
+  }
+  .bg-fog {
+    background-color: var(--fog);
+  }
+  .bg-offwhite {
+    background-color: var(--offwhite);
+  }
+
+  .border-sand {
+    border-color: var(--sand);
+  }
+  .border-moss {
+    border-color: var(--moss);
   }
 }

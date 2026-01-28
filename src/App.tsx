@@ -12,7 +12,7 @@ import { Footer } from './components/sections/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 via-emerald-50/50 to-amber-50/30">
+    <div className="min-h-screen bg-gradient-to-b from-[#e6e9e5] via-[#f7f6f2] to-[#cbb79f]/30">
       <ErrorBoundary>
         <Header />
       </ErrorBoundary>

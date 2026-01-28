@@ -1,13 +1,13 @@
 export const PUBLICATIONS = [
   {
     id: 'pub-1',
-    title: "Assessing forest cover and tree density dynamics in the Congo–Nile Divide region, Western Rwanda",
+    title: "Assessing forest cover and tree density dynamics in the Congo-Nile Divide region, Western Rwanda",
     link: "https://doi.org/10.20935/AcadEnvSci7864",
     year: "2025"
   },
   {
     id: 'pub-2',
-    title: "Regulatory and socio-economic factors shaping forest landscape restoration in the Congo–Nile Crest",
+    title: "Regulatory and socio-economic factors shaping forest landscape restoration in the Congo-Nile Crest",
     link: "https://doi.org/10.20935/AcadEnvSci7794",
     year: "2025"
   },
@@ -26,7 +26,7 @@ export const PUBLICATIONS = [
   },
   {
     id: 'pub-6',
-    title: "Prevalence and Factors Associated with Intestinal Helminthiases and Schistosomiasis Among Preschool – Aged Children in Rwanda",
+    title: "Prevalence and Factors Associated with Intestinal Helminthiases and Schistosomiasis Among Preschool - Aged Children in Rwanda",
     link: "https://doi.org/10.20944/preprints202410.1080.v1",
     year: "2024"
   },
