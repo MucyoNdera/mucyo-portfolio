@@ -52,6 +52,12 @@
   .bg-offwhite {
     background-color: var(--offwhite);
   }
+  .bg-offwhite-95 {
+    background-color: rgba(247, 246, 242, 0.95);
+  }
+  .bg-offwhite-90 {
+    background-color: rgba(247, 246, 242, 0.9);
+  }
 
   .border-sand {
     border-color: var(--sand);

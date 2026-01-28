@@ -22,7 +22,7 @@ export function Header() {
   };
 
   return (
-    <nav className={`fixed top-0 w-full ${isScrolled ? 'bg-offwhite/95' : 'bg-offwhite/95'} backdrop-blur-md shadow-sm border-b border-sand/40 z-50 transition-all duration-300`}>
+    <nav className={`fixed top-0 w-full ${isScrolled ? 'bg-offwhite-95' : 'bg-offwhite-90'} backdrop-blur-md shadow-sm border-b border-white/70 z-50 transition-all duration-300`}>
       <div className="page-container">
         <div className="flex justify-between items-center h-14">
           <div className="flex-shrink-0 flex items-center min-w-0">
