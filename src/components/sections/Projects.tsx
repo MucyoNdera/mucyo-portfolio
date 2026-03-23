@@ -88,14 +88,16 @@ export function Projects() {
                   <h3 className="text-base font-semibold text-forest line-clamp-1">
                     {project.title}
                   </h3>
-
+                  {/* Clients (if present) */}
+                  {project.clients && (
+                    <div className="text-xs text-gray-500 mb-1">Clients: {project.clients}</div>
+                  )}
                   {/* Summary */}
                   <p className="text-sm text-gray-600 line-clamp-2">
                     {project.description.length > 120
                       ? `${project.description.substring(0, 120)}...`
                       : project.description}
                   </p>
-
                   {/* Tag */}
                   <div className="flex gap-2">
                     <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-sand/40 text-slate ring-1 ring-sand w-fit">
@@ -144,6 +146,9 @@ export function Projects() {
                     <p className="text-sm text-gray-700 leading-relaxed">
                       {project.description}
                     </p>
+                    {project.clients && (
+                      <div className="text-xs text-gray-500">Clients: {project.clients}</div>
+                    )}
                   </div>
                 )}
               </div>
