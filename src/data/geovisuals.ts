@@ -11,6 +11,16 @@ export interface GeoVisualItem {
 
 export const MAPS: GeoVisualItem[] = [
   {
+    id: 'map-3',
+    title: 'Land Use and Land Cover Classification',
+    description: 'Multi-spectral classification showing current land cover types including forests, agriculture, urban areas, barren land, grassland, and water bodies.',
+    keyTakeaway: '58% of study area under agricultural use',
+    tags: ['LULC', 'Land Cover', 'Monitoring'],
+    image: './images/Current land use land cover.jpg',
+    link: '/images/Current land use land cover.jpg',
+    type: 'image'
+  },
+  {
     id: 'map-1',
     title: 'Maize Suitability Assessment',
     description: 'Spatial multi-criteria analysis identifying optimal zones for maize cultivation based on environmental, climatic, soil, and topographic variables.',
@@ -31,16 +41,6 @@ export const MAPS: GeoVisualItem[] = [
     type: 'image'
   },
   {
-    id: 'map-3',
-    title: 'Land Use and Land Cover Classification',
-    description: 'Multi-spectral classification showing current land cover types including forests, agriculture, urban areas, barren land, grassland, and water bodies.',
-    keyTakeaway: '58% of study area under agricultural use',
-    tags: ['LULC', 'Land Cover', 'Monitoring'],
-    image: './images/Current land use land cover.jpg',
-    link: '/images/Current land use land cover.jpg',
-    type: 'image'
-  },
-  {
     id: 'map-4',
     title: 'Vegetation Cover in Volcanoes National Park',
     description: 'Vegetation mapping and classification using Sentinel-2A imagery with a maximum likelihood classification method in ArcGIS Pro.',
@@ -54,16 +54,6 @@ export const MAPS: GeoVisualItem[] = [
 
 export const STORYMAPS: GeoVisualItem[] = [
   {
-    id: 'story-1',
-    title: 'Climate Change Adaptation in Rwanda',
-    description: 'Interactive narrative exploring climate adaptation strategies, community resilience, and nature-based solutions in Musanze District.',
-    keyTakeaway: 'Community-led adaptation integrating traditional knowledge with modern farming practices',
-    tags: ['Climate Change', 'Adaptation', 'Community'],
-    image: './images/GanzAfrica_Workshop.png',
-    link: 'https://storymaps.arcgis.com/stories/d15dd9b68d9f4cd595b300fa5edbe0b8',
-    type: 'iframe'
-  },
-  {
     id: 'story-2',
     title: 'Roots of Success: Rwanda\'s Journey to a Greener Future',
     description: 'Documentary-style storymap about forest landscape restoration in Rwanda, highlighting forest landscape restoration principles, ecological benefits, community engagement, contributions to Rwanda\'s "Green Nation" vision.',
@@ -71,6 +61,16 @@ export const STORYMAPS: GeoVisualItem[] = [
     tags: ['Restoration', 'Conservation', 'Sustainability'],
     image: './images/Nyungwe NPK road.jpg',
     link: 'https://storymaps.arcgis.com/stories/59ec67e48507448a82e5339be2ebb78c',
+    type: 'iframe'
+  },
+  {
+    id: 'story-1',
+    title: 'Climate Change Adaptation in Rwanda',
+    description: 'Interactive narrative exploring climate adaptation strategies, community resilience, and nature-based solutions in Musanze District.',
+    keyTakeaway: 'Community-led adaptation integrating traditional knowledge with modern farming practices',
+    tags: ['Climate Change', 'Adaptation', 'Community'],
+    image: './images/GanzAfrica_Workshop.png',
+    link: 'https://storymaps.arcgis.com/stories/d15dd9b68d9f4cd595b300fa5edbe0b8',
     type: 'iframe'
   }
 ];
